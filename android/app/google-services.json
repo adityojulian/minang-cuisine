@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "97939368238",
+    "project_id": "pickles-9090e",
+    "storage_bucket": "pickles-9090e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:97939368238:android:a5a1a846675f662ad8b2bf",
+        "android_client_info": {
+          "package_name": "com.example.pickles"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "97939368238-8s2u5f77aivoe70r62sjn13ro748dp6m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjkRddovVl_0U3d7Bm3JRq24mwEn3NXN0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "97939368238-8s2u5f77aivoe70r62sjn13ro748dp6m.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "97939368238-idco56id87ln1ij126tu1acq341ovmch.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.pickles"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:97939368238:android:b09dd21493f53243d8b2bf",
+        "android_client_info": {
+          "package_name": "com.example.pickles_rapyd"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "97939368238-8s2u5f77aivoe70r62sjn13ro748dp6m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjkRddovVl_0U3d7Bm3JRq24mwEn3NXN0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "97939368238-8s2u5f77aivoe70r62sjn13ro748dp6m.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "97939368238-idco56id87ln1ij126tu1acq341ovmch.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.pickles"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
