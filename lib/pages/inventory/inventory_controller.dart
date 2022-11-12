@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 
 class InventoryController extends GetxController {
   final String title = 'Recycle your product';
-  RxList selected = RxList([]);
+  List selected = [];
 
   final List<Map<String, dynamic>> allItems = [
     {"name": "printing paper bundles", "type": "paper", "weight": "8gr"},
@@ -43,13 +43,23 @@ class InventoryController extends GetxController {
     foundItems.value = results;
   }
 
+  bool checkItem(int input) {
+    if (selected.contains(input)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   void checkboxAdd(int index) {
     selected.add(index);
     print(selected.toString());
+    update();
   }
 
   void checkboxRemove(int index) {
     selected.remove(index);
     print(selected.toString());
+    update();
   }
 }

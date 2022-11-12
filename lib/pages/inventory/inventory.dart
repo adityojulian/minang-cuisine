@@ -24,9 +24,9 @@ class Inventory extends GetView<InventoryController> {
             ),
             SizedBox(height: 20),
             Expanded(
-              child: Obx(
-                () => ListView.builder(
-                  shrinkWrap: true,
+              child: GetBuilder<InventoryController>(
+                builder: (controller) => ListView.builder(
+                  // shrinkWrap: true,
                   itemCount: controller.foundItems.length,
                   itemBuilder: (_, index) => CheckboxListTile(
                     controlAffinity: ListTileControlAffinity.leading,
