@@ -8,8 +8,6 @@ import 'package:pickles_rapyd/routes/app_page.dart';
 import 'package:pickles_rapyd/routes/route_name.dart';
 import 'firebase_options.dart';
 
-List<CameraDescription> cameras = [];
-
 void main() async {
   // WidgetsFlutterBinding.ensureInitialized();
   // await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);

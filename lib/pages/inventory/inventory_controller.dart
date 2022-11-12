@@ -12,11 +12,12 @@ class InventoryController extends GetxController {
     {"name": "tomato", "type": "paper", "weight": "11gr"},
   ];
 
-  RxList<Map<String, dynamic>> foundItems = RxList<Map<String, dynamic>>([]);
+  // RxList<Map<String, dynamic>> foundItems = RxList<Map<String, dynamic>>([]);
+  List foundItems = [];
 
   @override
   void onInit() {
-    foundItems.value = allItems;
+    foundItems = allItems;
     super.onInit();
   }
 
@@ -40,7 +41,8 @@ class InventoryController extends GetxController {
               .contains(itemName.toLowerCase()))
           .toList();
     }
-    foundItems.value = results;
+    foundItems = results;
+    update();
   }
 
   bool checkItem(int input) {
@@ -51,13 +53,13 @@ class InventoryController extends GetxController {
     }
   }
 
-  void checkboxAdd(int index) {
+  void checkboxAdd(String index) {
     selected.add(index);
     print(selected.toString());
     update();
   }
 
-  void checkboxRemove(int index) {
+  void checkboxRemove(String index) {
     selected.remove(index);
     print(selected.toString());
     update();

@@ -30,10 +30,13 @@ class Inventory extends GetView<InventoryController> {
                   itemCount: controller.foundItems.length,
                   itemBuilder: (_, index) => CheckboxListTile(
                     controlAffinity: ListTileControlAffinity.leading,
-                    value: controller.selected.contains(index),
+                    value: controller.selected
+                        .contains(controller.foundItems[index]["name"]),
                     onChanged: ((value) => value ?? true
-                        ? controller.checkboxAdd(index)
-                        : controller.checkboxRemove(index)),
+                        ? controller.checkboxAdd(
+                            controller.foundItems[index]["name"].toString())
+                        : controller.checkboxRemove(
+                            controller.foundItems[index]["name"].toString())),
                     title: Text(
                       controller.foundItems[index]['name']
                           .toString()
@@ -50,7 +53,9 @@ class Inventory extends GetView<InventoryController> {
                   ),
                 ),
               ),
-            )
+            ),
+            ElevatedButton(
+                onPressed: () => Get.to(TestPage()), child: Text("TestPage"))
           ],
         ),
       ),
