@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 class InventoryController extends GetxController {
   final String title = 'Recycle your product';
   List selected = [];
+  bool selectAllStatus = false;
+  bool searchStatus = false;
 
   final List<Map<String, dynamic>> allItems = [
     {"name": "printing paper bundles", "type": "paper", "weight": "8gr"},
@@ -33,7 +35,9 @@ class InventoryController extends GetxController {
     List<Map<String, dynamic>> results = [];
     if (itemName.isEmpty) {
       results = allItems;
+      searchStatus = false;
     } else {
+      searchStatus = true;
       results = allItems
           .where((element) => element["name"]
               .toString()
@@ -41,6 +45,7 @@ class InventoryController extends GetxController {
               .contains(itemName.toLowerCase()))
           .toList();
     }
+    print({searchStatus});
     foundItems = results;
     update();
   }
@@ -56,12 +61,39 @@ class InventoryController extends GetxController {
   void checkboxAdd(String index) {
     selected.add(index);
     print(selected.toString());
+    if (selected.length == allItems.length) {
+      selectAllStatus = true;
+    } else {
+      selectAllStatus = false;
+    }
     update();
   }
 
   void checkboxRemove(String index) {
     selected.remove(index);
     print(selected.toString());
+    if (selected.length == allItems.length) {
+      selectAllStatus = true;
+    } else {
+      selectAllStatus = false;
+    }
     update();
+  }
+
+  void selectAll() {
+    if (selectAllStatus == false) {
+      allItems.forEach((element) {
+        if (!selected.contains(element["name"])) {
+          selected.add(element["name"]);
+        }
+        selectAllStatus = true;
+        update();
+      });
+    } else {
+      selected = [];
+      selectAllStatus = false;
+      update();
+      ;
+    }
   }
 }

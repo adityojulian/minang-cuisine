@@ -23,6 +23,23 @@ class Inventory extends GetView<InventoryController> {
                   labelText: "Search", suffixIcon: Icon(Icons.search)),
             ),
             SizedBox(height: 20),
+            GetBuilder<InventoryController>(
+              builder: (controller) {
+                return Visibility(
+                  visible: !controller.searchStatus,
+                  child: CheckboxListTile(
+                      title: Text(
+                        "Select all",
+                        style: TextStyle(fontWeight: FontWeight.w600),
+                      ),
+                      controlAffinity: ListTileControlAffinity.leading,
+                      value: controller.selectAllStatus,
+                      onChanged: (value) => value ?? true
+                          ? controller.selectAll()
+                          : controller.selectAll()),
+                );
+              },
+            ),
             Expanded(
               child: GetBuilder<InventoryController>(
                 builder: (controller) => ListView.builder(
