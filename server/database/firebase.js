@@ -1,5 +1,5 @@
-import { initializeApp } from "firebase/app";
-import { getFirestore, collection } from "firebase/firestore/lite";
+const { initializeApp } = require("firebase/app");
+const { getFirestore, collection } = require("firebase/firestore");
 const firebaseConfig = {
     apiKey: "AIzaSyAO35lWt4hLx4oTFE3IWUHjYDwExTv6DZk",
     authDomain: "pickles-9090e.firebaseapp.com",
