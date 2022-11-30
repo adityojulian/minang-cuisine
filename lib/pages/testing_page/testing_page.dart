@@ -64,7 +64,13 @@ class TestPage extends StatelessWidget {
                       decoration: InputDecoration(
                           suffixIcon: TextButton(
                               onPressed: () => controller.toggleShow(),
-                              child: Text("Show")),
+                              child: Text(
+                                "Show",
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.green),
+                              )),
                           filled: true,
                           fillColor: Color.fromRGBO(232, 232, 232, 1),
                           border: OutlineInputBorder(

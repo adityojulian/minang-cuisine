@@ -1,6 +1,7 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:pickles_rapyd/pages/dashboard/dashboard.dart';
 import 'package:pickles_rapyd/pages/dashboard/dashboard_bindings.dart';
+import 'package:pickles_rapyd/pages/homepage/camera_screen.dart';
 import 'package:pickles_rapyd/pages/homepage/homapage.dart';
 import 'package:pickles_rapyd/pages/inventory/inventory.dart';
 import 'package:pickles_rapyd/pages/testing_page/testing_page.dart';

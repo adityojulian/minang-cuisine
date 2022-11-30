@@ -1,0 +1,44 @@
+[
+	{
+		"id": "Recycle Station Aldi",
+		"name": "Aldi",
+		"latitude": 52.4446,
+		"longitude": -1.9354
+	},
+	{
+		"id": "Recycle Station Tesco",
+		"name": "Tesco Express Selly Oak",
+		"latitude": 52.4467,
+		"longitude": -1.9308
+	},
+	{
+		"id": "Recycle Station Seoul Plaza",
+		"name": "Seoul Plaza",
+		"latitude": 52.4459,
+		"longitude": -1.9323
+	},
+	{
+		"id": "Recycle Station Sainsbury's",
+		"name": "Tesco Express Selly Oak",
+		"latitude": 52.4432,
+		"longitude": -1.9388
+	},
+	{
+		"id": "Recycle Station Police Station",
+		"name": "Police Station Selly Oak",
+		"latitude": 52.439,
+		"longitude": -1.9266
+	},
+	{
+		"id": "Recycle Station CocoBab",
+		"name": "CocoBab",
+		"latitude": 52.4372,
+		"longitude": -1.9293
+	},
+	{
+		"id": "Recycle Station Selly Park",
+		"name": "Selly Park",
+		"latitude": 52.4421,
+		"longitude": -1.9239
+	}
+]

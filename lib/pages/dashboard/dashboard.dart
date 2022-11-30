@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pickles_rapyd/pages/dashboard/dashboard_controller.dart';
 import 'package:pickles_rapyd/pages/homepage/homapage.dart';
+import 'package:pickles_rapyd/pages/homepage/camera_screen.dart';
 import 'package:pickles_rapyd/pages/inventory/inventory.dart';
 
 class DashboardPage extends StatelessWidget {

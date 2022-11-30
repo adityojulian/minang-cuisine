@@ -1,9 +1,18 @@
+import 'package:ai_barcode/ai_barcode.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:get/get.dart';
+import 'package:mobile_scanner/mobile_scanner.dart';
+import 'package:pickles_rapyd/pages/dashboard/barcodeCamera_controller.dart';
 import 'package:pickles_rapyd/pages/dashboard/camera_controller.dart';
+import 'package:pickles_rapyd/pages/dashboard/dashboard_controller.dart';
+import 'package:pickles_rapyd/pages/dashboard/new_camera_controller.dart';
+import 'package:pickles_rapyd/pages/homepage/barcode_camera_screen.dart';
+import 'package:pickles_rapyd/pages/homepage/camera_screen.dart';
 import 'package:pickles_rapyd/pages/homepage/home_controller.dart';
+import 'package:qr_mobile_vision/qr_camera.dart';
 
 class HomePage extends GetView<HomeController> {
   void openBottomSheet() {
@@ -188,34 +197,69 @@ class HomePage extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(centerTitle: true, title: Text(controller.title)),
-        // floatingActionButton: ElevatedButton(
-        //   child: const Text("Coba Lagi"),
-        //   onPressed: () {},
-        // ),
-        body: Stack(
-          children: [
-            GetBuilder<CameraControllerGetx>(
-                init: CameraControllerGetx(),
-                builder: (c) => c.cameraController.value.isInitialized
-                    ? Transform.scale(
-                        scale: cameraSize(Get.size.aspectRatio,
-                            c.cameraController.value.aspectRatio),
-                        child: Center(child: CameraPreview(c.cameraController)))
-                    : Container()),
-            Center(
-              child: ElevatedButton(
-                onPressed: () => openBottomSheet(),
-                child: Text("Saya homepage"),
-              ),
-            ),
-          ],
-        ));
-    // body: GetBuilder<CameraControllerGetx>(
-    //     init: CameraControllerGetx(),
-    //     builder: (c) => c.cameraController.value.isInitialized
-    //         ? Center(child: CameraPreview(c.cameraController))
-    //         : Container()));
+    // DashboardController dashboardController = Get.find<DashboardController>();
+    return GetBuilder<DashboardController>(
+      builder: (dashboardCon) {
+        return dashboardCon.tabIndex == 0
+            ? Scaffold(
+                appBar: AppBar(
+                  backgroundColor: Colors.transparent,
+                  shadowColor: Colors.transparent,
+                  centerTitle: true,
+                  title: Text(
+                    controller.title,
+                    style: TextStyle(color: Colors.black),
+                  ),
+                  bottom: TabBar(
+                    labelColor: Colors.black,
+                    indicatorColor: Colors.green,
+                    tabs: controller.homeTabs,
+                    indicatorWeight: 5,
+                    controller: controller.homeTabController,
+                    onTap: (value) => print("current index: " +
+                        controller.homeTabController.index.toString()),
+                  ),
+                ),
+                body: TabBarView(
+                    controller: controller.homeTabController,
+                    children: [
+                      Stack(
+                        children: const [SizedBox(child: CameraScreen())],
+                      ),
+                      // Container()
+                      Stack(
+                        children: [
+                          SizedBox(
+                            width: Get.width,
+                            height: Get.height - AppBar().preferredSize.height,
+                            child: GetBuilder<BarcodeCameraController>(
+                              init: BarcodeCameraController(),
+                              builder: (c) {
+                                return MobileScanner(
+                                    allowDuplicates: false,
+                                    onDetect: (barcode, args) {
+                                      if (barcode.rawValue == null) {
+                                        debugPrint('Failed to scan Barcode');
+                                      } else {
+                                        final String code = barcode.rawValue!;
+                                        debugPrint('Barcode found! ');
+                                      }
+                                    });
+                              },
+                            ),
+                          ),
+                          Center(
+                            child: ElevatedButton(
+                              onPressed: () => openBottomSheet(),
+                              child: Text("Saya homepage"),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ]),
+              )
+            : Container();
+      },
+    );
   }
 }
