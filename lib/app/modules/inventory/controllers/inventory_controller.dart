@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
+import 'package:pickles_rapyd/app/data/inventory_provider.dart';
 import 'package:pickles_rapyd/app/models/GroceryItemsModel.dart';
+import 'package:pickles_rapyd/app/models/InventoryItemModel.dart';
 
 FirebaseFirestore db = FirebaseFirestore.instance;
 
@@ -10,14 +12,15 @@ class InventoryController extends GetxController {
   bool selectAllStatus = false;
   bool searchStatus = false;
   List<GroceryItems> recycleItems = <GroceryItems>[];
+  List<InventoryItemModel> allItems = [];
 
-  final List<Map<String, dynamic>> allItems = [
-    {"name": "Printing Paper Bundles", "type": "Paper", "weight": "8gr"},
-    {"name": "Nutella Go!", "type": "Plastic", "weight": "6gr"},
-    {"name": "Knorr Chicken Powder", "type": "Metal", "weight": "13gr"},
-    {"name": "Water Bottle", "type": "Plastic", "weight": "11gr"},
-    {"name": "Tomato", "type": "Paper", "weight": "11gr"},
-  ];
+  // final List<Map<String, dynamic>> allItems = [
+  //   {"name": "Printing Paper Bundles", "type": "Paper", "weight": "8gr"},
+  //   {"name": "Nutella Go!", "type": "Plastic", "weight": "6gr"},
+  //   {"name": "Knorr Chicken Powder", "type": "Metal", "weight": "13gr"},
+  //   {"name": "Water Bottle", "type": "Plastic", "weight": "11gr"},
+  //   {"name": "Tomato", "type": "Paper", "weight": "11gr"},
+  // ];
 
   final data = {
     "items": ["12376", "45695", "34584", "95867", "23385"],
@@ -41,10 +44,11 @@ class InventoryController extends GetxController {
   }
 
   // RxList<Map<String, dynamic>> foundItems = RxList<Map<String, dynamic>>([]);
-  List foundItems = [];
+  List<InventoryItemModel> foundItems = [];
 
   @override
-  void onInit() {
+  void onInit() async {
+    allItems = await InventoryProvider().getUserInventory();
     foundItems = allItems;
     super.onInit();
   }
@@ -58,14 +62,14 @@ class InventoryController extends GetxController {
   void onClose() {}
 
   void filterItem(String itemName) {
-    List<Map<String, dynamic>> results = [];
+    List<InventoryItemModel> results = [];
     if (itemName.isEmpty) {
       results = allItems;
       searchStatus = false;
     } else {
       searchStatus = true;
       results = allItems
-          .where((element) => element["name"]
+          .where((element) => element.name
               .toString()
               .toLowerCase()
               .contains(itemName.toLowerCase()))
@@ -84,7 +88,7 @@ class InventoryController extends GetxController {
     }
   }
 
-  void checkboxAdd(Map<String, dynamic> index) {
+  void checkboxAdd(InventoryItemModel index) {
     selected.add(index);
     print(selected.toString());
     if (selected.length == allItems.length) {
@@ -95,7 +99,7 @@ class InventoryController extends GetxController {
     update();
   }
 
-  void checkboxRemove(Map<String, dynamic> index) {
+  void checkboxRemove(InventoryItemModel index) {
     selected.remove(index);
     print(selected.toString());
     if (selected.length == allItems.length) {
