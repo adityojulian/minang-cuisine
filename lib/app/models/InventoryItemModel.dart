@@ -1,7 +1,7 @@
 class InventoryItemModel {
   bool? recycle;
   String? material;
-  double? weight;
+  dynamic? weight;
   String? id;
   String? name;
   String? type;

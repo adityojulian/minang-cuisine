@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:map_launcher/map_launcher.dart';
 import 'package:pickles_rapyd/app/models/GroceryItemsModel.dart';
+import 'package:pickles_rapyd/app/models/InventoryItemModel.dart';
 import 'package:pickles_rapyd/app/views/views/material_chip_view.dart';
 
 import '../../models/MapModel.dart';
@@ -18,7 +19,7 @@ class CarouselMapView extends GetView {
       required this.recycleItems});
   final MapModel mapItem;
   final LatLng currentLocation;
-  final List<GroceryItems> recycleItems;
+  final List<InventoryItemModel> recycleItems;
 
   void openBottomSheet() {
     Get.bottomSheet(

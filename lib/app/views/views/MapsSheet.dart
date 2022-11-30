@@ -3,13 +3,14 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:map_launcher/map_launcher.dart';
 import 'package:pickles_rapyd/app/models/GroceryItemsModel.dart';
+import 'package:pickles_rapyd/app/models/InventoryItemModel.dart';
 import 'package:pickles_rapyd/app/models/MapModel.dart';
 import 'package:pickles_rapyd/app/routes/app_pages.dart';
 
 class MapsSheet {
   static show({
     required Function(AvailableMap map) onMapTap,
-    required List<GroceryItems> recycleItems,
+    required List<InventoryItemModel> recycleItems,
     required MapModel recycleLocation,
   }) async {
     final availableMaps = await MapLauncher.installedMaps;

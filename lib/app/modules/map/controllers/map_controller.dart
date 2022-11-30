@@ -363,6 +363,7 @@ class MapController extends GetxController {
     fetchLocations();
     await createMarkers();
     createCarouse();
+    update();
     super.onInit();
   }
 

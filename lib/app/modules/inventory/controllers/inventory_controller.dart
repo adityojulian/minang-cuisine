@@ -8,10 +8,10 @@ FirebaseFirestore db = FirebaseFirestore.instance;
 
 class InventoryController extends GetxController {
   final String title = 'Recycle your product';
-  List selected = [];
+  List<InventoryItemModel> selected = [];
   bool selectAllStatus = false;
   bool searchStatus = false;
-  List<GroceryItems> recycleItems = <GroceryItems>[];
+  List<InventoryItemModel> recycleItems = <InventoryItemModel>[];
   List<InventoryItemModel> allItems = [];
 
   // final List<Map<String, dynamic>> allItems = [
@@ -50,16 +50,9 @@ class InventoryController extends GetxController {
   void onInit() async {
     allItems = await InventoryProvider().getUserInventory();
     foundItems = allItems;
+    update();
     super.onInit();
   }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {}
 
   void filterItem(String itemName) {
     List<InventoryItemModel> results = [];
@@ -129,11 +122,7 @@ class InventoryController extends GetxController {
 
   fetchToModel() {
     recycleItems = [];
-    recycleItems.addAll(
-      List<Map<String, dynamic>>.from(selected).map(
-        (e) => GroceryItems.fromJson(e),
-      ),
-    );
+    recycleItems = selected;
     update();
   }
 }
