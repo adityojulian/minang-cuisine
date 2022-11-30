@@ -209,7 +209,7 @@ class HomepageView extends GetView<HomepageController> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Text(
-                        "0",
+                        controller.profile.points.toString(),
                         style: TextStyle(
                             fontWeight: FontWeight.w700, fontSize: 15),
                       ),
