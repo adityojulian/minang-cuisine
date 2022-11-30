@@ -22,6 +22,13 @@ const create = asyncHandler(async (req, res) => {
     }
 });
 
+async function create_wallet(body) {
+    console.log(body);
+    const result = await makeRequest("POST", "/v1/user", body);
+    console.log(result);
+    return result;
+}
+
 // Update
 // @desc Update existing wallet information
 // @route POST /update-wallet
@@ -76,6 +83,16 @@ const transaction = asyncHandler(async (req, res) => {
     }
 });
 
+const transactionFunc = async (body) => {
+    try {
+        const result = await makeRequest("POST", "/v1/account/transfer", body);
+        console.log(result);
+        return result;
+    } catch (err) {
+        return err;
+    }
+};
+
 // Response
 // @desc Respond to transaction
 // @route POST /response-wallet
@@ -93,11 +110,22 @@ const response = asyncHandler(async (req, res) => {
         res.json(err);
     }
 });
+const responseFunc = async (body) => {
+    const result = await makeRequest(
+        "POST",
+        "/v1/account/transfer/response",
+        body
+    );
+    return result.body.data.status;
+};
 
 module.exports = {
     create,
+    create_wallet,
     update,
     transaction,
+    transactionFunc,
     retrieve,
     response,
+    responseFunc,
 };

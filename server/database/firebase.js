@@ -1,5 +1,6 @@
 const { initializeApp } = require("firebase/app");
 const { getFirestore, collection } = require("firebase/firestore");
+const { writeBatch } = require("firebase/firestore");
 const firebaseConfig = {
     apiKey: "AIzaSyAO35lWt4hLx4oTFE3IWUHjYDwExTv6DZk",
     authDomain: "pickles-9090e.firebaseapp.com",
@@ -12,6 +13,7 @@ const firebaseConfig = {
 
 const fb = initializeApp(firebaseConfig);
 const db = getFirestore(fb);
+const batch = writeBatch(db);
 
 // ITEMS
 const grocery_items = collection(db, "grocery_items");
@@ -29,7 +31,7 @@ const transaction_to_donation = collection(db, "transaction_to_donation");
 
 // TRASH_BANK
 const trash_bank = collection(db, "trash_bank");
-const trash_bank_inventory = collection(db, "trash_bank_iventory");
+const trash_bank_inventory = collection(db, "trash_bank_inventory");
 
 // COMPANY
 const user_company = collection(db, "user_company");
@@ -47,6 +49,8 @@ const transaction_recycle_inventory = collection(
 const donation = collection(db, "donation");
 
 module.exports = {
+    db,
+    batch,
     grocery_items,
     user,
     recycle_session,
