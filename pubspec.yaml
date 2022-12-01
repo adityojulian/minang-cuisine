@@ -27,6 +27,7 @@ dependencies:
   auto_size_text: 3.0.0
   map_launcher: 2.4.0
   flutter_svg: 1.1.6
+  awesome_select: 6.0.0
   flutter: 
     sdk: flutter
 

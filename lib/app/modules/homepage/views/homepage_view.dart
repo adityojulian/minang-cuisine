@@ -67,6 +67,7 @@ class HomepageView extends GetView<HomepageController> {
                     child: TextField(
                       controller: controller.pointController,
                       keyboardType: TextInputType.number,
+                      onChanged: (value) => controller.convertPointToGBP(value),
                       cursorColor: Color.fromRGBO(112, 185, 129, 1),
                       style:
                           TextStyle(fontSize: 15, fontWeight: FontWeight.w400),
@@ -113,6 +114,7 @@ class HomepageView extends GetView<HomepageController> {
                     width: 66,
                     child: TextField(
                       controller: controller.gbpController,
+                      onChanged: (value) => controller.convertGBPtoPoint(value),
                       keyboardType: TextInputType.number,
                       cursorColor: Color.fromRGBO(112, 185, 129, 1),
                       style:
@@ -196,6 +198,11 @@ class HomepageView extends GetView<HomepageController> {
         backgroundColor: Colors.transparent,
         shadowColor: Colors.transparent,
         centerTitle: true,
+        leading: IconButton(
+          onPressed: () => Get.toNamed(Routes.ADD_ITEM),
+          icon: Icon(Icons.person_2_outlined),
+          color: Colors.black,
+        ),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -251,6 +258,59 @@ class HomepageView extends GetView<HomepageController> {
               ),
             ),
             Divider(thickness: 1),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 14),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Card(
+                    elevation: 0,
+                    color: Colors.transparent,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: SizedBox(
+                      height: 130,
+                      child: Stack(
+                        alignment: Alignment.center,
+                        children: [
+                          Image(
+                            image: AssetImage("assets/gradient_box.png"),
+                            fit: BoxFit.cover,
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Text(
+                                "Available Balance",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 14,
+                                    color: Colors.white),
+                              ),
+                              Text(
+                                "£1000",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 20,
+                                    color: Colors.white),
+                              ),
+                              Text(
+                                "Pickles : 1000",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 10,
+                                    color: Colors.white),
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
             Padding(
               padding: const EdgeInsets.only(left: 16, right: 16, top: 37),
               child: Row(

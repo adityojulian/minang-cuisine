@@ -5,6 +5,7 @@ import 'package:pickles_rapyd/app/controllers/auth_controller.dart';
 import 'package:pickles_rapyd/app/modules/home/views/home_view.dart';
 import 'package:pickles_rapyd/app/modules/inventory/views/inventory_view.dart';
 import 'package:pickles_rapyd/app/modules/homepage/views/homepage_view.dart';
+import 'package:pickles_rapyd/app/routes/app_pages.dart';
 import '../controllers/dashboard_controller.dart';
 
 class DashboardView extends GetView<DashboardController> {
@@ -15,11 +16,11 @@ class DashboardView extends GetView<DashboardController> {
     return GetBuilder<DashboardController>(
       builder: (controller) {
         return Scaffold(
-          body: SafeArea(
-              child: IndexedStack(
-            index: controller.tabIndex,
-            children: [HomepageView(), HomeView(), InventoryView()],
-          )),
+          body: Navigator(
+            key: Get.nestedKey(1),
+            initialRoute: Routes.HOMAPAGE,
+            onGenerateRoute: controller.onGenerateRoute,
+          ),
           bottomNavigationBar: BottomNavigationBar(
             items: [
               BottomNavigationBarItem(
