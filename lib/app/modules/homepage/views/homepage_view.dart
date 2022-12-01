@@ -39,13 +39,13 @@ class HomepageView extends GetView<HomepageController> {
                   Container(
                     alignment: Alignment.center,
                     height: 21,
-                    width: 25,
+                    width: 150,
                     decoration: BoxDecoration(
                       color: Color.fromRGBO(112, 185, 129, 1),
                       shape: BoxShape.rectangle,
                     ),
                     child: Text(
-                      20.toString(),
+                      controller.profile.points.toString(),
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontWeight: FontWeight.w700,

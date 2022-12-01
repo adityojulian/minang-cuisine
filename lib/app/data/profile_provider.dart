@@ -22,4 +22,17 @@ class ProfileProvider extends GetConnect {
       return result;
     }
   }
+
+  Future<String> convertPoints(String ewallet, int points) async {
+    final body = json.encode({"recycler_ewallet": ewallet, "points": points});
+    final response =
+        await post("http://10.0.2.2:3000/recycler/points-to-money", body);
+    if (response.status.hasError) {
+      return Future.error(response.statusText.toString());
+    } else {
+      print(response.body);
+      String result = json.decode(response.body).toString();
+      return result;
+    }
+  }
 }
