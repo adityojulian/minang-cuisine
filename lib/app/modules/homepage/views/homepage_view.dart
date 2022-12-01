@@ -327,10 +327,41 @@ class HomepageView extends GetView<HomepageController> {
                           borderRadius: BorderRadius.circular(20),
                           onTap: () => openBottomSheet(),
                           child: SizedBox(
-                            height: 119,
-                            width: 150,
-                            child: Image(
-                              image: AssetImage("assets/money_icon.png"),
+                            height: 89,
+                            width: 107,
+                            child: Image.asset(
+                              "assets/transfer.png",
+                              scale: 1,
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 16),
+                      Center(
+                        child: Text(
+                          "Transfer",
+                          style: TextStyle(
+                              fontSize: 11, fontWeight: FontWeight.w700),
+                        ),
+                      )
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      Card(
+                        color: Color.fromRGBO(93, 176, 117, 1),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: InkWell(
+                          borderRadius: BorderRadius.circular(20),
+                          onTap: () => openBottomSheet(),
+                          child: SizedBox(
+                            height: 89,
+                            width: 107,
+                            child: Image.asset(
+                              "assets/money_icon.png",
+                              scale: 1.4,
                             ),
                           ),
                         ),
@@ -356,10 +387,11 @@ class HomepageView extends GetView<HomepageController> {
                           borderRadius: BorderRadius.circular(20),
                           onTap: () => Get.toNamed(Routes.DONATION),
                           child: SizedBox(
-                            height: 119,
-                            width: 150,
-                            child: Image(
-                              image: AssetImage("assets/donation.png"),
+                            height: 89,
+                            width: 107,
+                            child: Image.asset(
+                              "assets/donation.png",
+                              scale: 1.5,
                             ),
                           ),
                         ),
@@ -451,11 +483,12 @@ class HomepageView extends GetView<HomepageController> {
             Padding(
               padding: const EdgeInsets.only(left: 16, right: 16, top: 21),
               child: Container(
-                height: 357,
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.black26),
-                  borderRadius: BorderRadius.circular(10),
-                ),
+                child: Image.asset("assets/bar_chart.png"),
+                // height: 357,
+                // decoration: BoxDecoration(
+                //   border: Border.all(color: Colors.black26),
+                //   borderRadius: BorderRadius.circular(10),
+                // ),
               ),
             ),
             Padding(
@@ -467,7 +500,12 @@ class HomepageView extends GetView<HomepageController> {
             ),
             SizedBox(height: 15),
             Divider(thickness: 1),
-            SizedBox(height: 40),
+            SizedBox(
+              height: 34,
+            ),
+            SizedBox(
+              child: Image.asset("assets/pie_chart.png"),
+            ),
             Padding(
               padding: const EdgeInsets.only(left: 27, right: 27, top: 21),
               child: Column(
