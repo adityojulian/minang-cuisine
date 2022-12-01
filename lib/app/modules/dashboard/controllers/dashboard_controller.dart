@@ -42,6 +42,9 @@ class DashboardController extends GetxController {
   }
 
   void changeTabIndex(int index) {
+    if (tabIndex == index) {
+      return;
+    }
     tabIndex = index;
     if (index == 0) {
       Get.delete<HomeController>();
