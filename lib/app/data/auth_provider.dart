@@ -9,7 +9,8 @@ class AuthProvider extends GetConnect {
     final body = json.encode(userData);
     print(body);
 
-    var res = await post("http://10.0.2.2:3000/recycler/create-user", body);
+    var res = await post(
+        "https://3228-86-26-161-148.eu.ngrok.io/recycler/create-user", body);
     print(res.statusCode);
     print(res.statusText);
     print(res.bodyString);

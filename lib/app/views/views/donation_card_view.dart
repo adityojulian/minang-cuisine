@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:pickles_rapyd/app/routes/app_pages.dart';
 
 class DonationCardView extends GetView {
   @override
@@ -14,7 +15,7 @@ class DonationCardView extends GetView {
         //   borderRadius: BorderRadius.circular(10),
         // ),
         child: InkWell(
-          onTap: () {},
+          onTap: () => Get.toNamed(Routes.DONATION_DETAIL),
           child: Column(
             // mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,

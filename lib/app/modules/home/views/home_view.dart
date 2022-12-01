@@ -237,8 +237,9 @@ class HomeView extends GetView<HomeController> {
                                       if (barcode.rawValue == null) {
                                         debugPrint('Failed to scan Barcode');
                                       } else {
+                                        openBottomSheet();
                                         final String code = barcode.rawValue!;
-                                        debugPrint('Barcode found! ');
+                                        debugPrint('Barcode found! $code');
                                       }
                                     });
                               },

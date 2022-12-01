@@ -16,6 +16,7 @@ abstract class Routes {
   static const CONFIRMATION = _Paths.CONFIRMATION;
   static const RECYCLE_SUCCESS = _Paths.RECYCLE_SUCCESS;
   static const ADD_ITEM = _Paths.ADD_ITEM;
+  static const DONATION_DETAIL = _Paths.DONATION_DETAIL;
 }
 
 abstract class _Paths {
@@ -33,4 +34,5 @@ abstract class _Paths {
   static const CONFIRMATION = '/confirmation';
   static const RECYCLE_SUCCESS = '/recycle-success';
   static const ADD_ITEM = '/add-item';
+  static const DONATION_DETAIL = '/donation-detail';
 }
