@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:pickles_rapyd/app/routes/app_pages.dart';
+import 'package:pickles_rapyd/app/data/profile_provider.dart';
 
 import '../controllers/homepage_controller.dart';
 
@@ -67,6 +68,7 @@ class HomepageView extends GetView<HomepageController> {
                     child: TextField(
                       controller: controller.pointController,
                       keyboardType: TextInputType.number,
+                      onChanged: (value) => controller.convertPointToGBP(value),
                       cursorColor: Color.fromRGBO(112, 185, 129, 1),
                       style:
                           TextStyle(fontSize: 15, fontWeight: FontWeight.w400),
@@ -113,6 +115,7 @@ class HomepageView extends GetView<HomepageController> {
                     width: 66,
                     child: TextField(
                       controller: controller.gbpController,
+                      onChanged: (value) => controller.convertGBPtoPoint(value),
                       keyboardType: TextInputType.number,
                       cursorColor: Color.fromRGBO(112, 185, 129, 1),
                       style:
@@ -156,7 +159,11 @@ class HomepageView extends GetView<HomepageController> {
                 height: 32,
                 // width: 152,
                 child: ElevatedButton(
-                  onPressed: () => {},
+                  onPressed: () {
+                    controller.reqConvertPoints(controller.profile.ewallet!,
+                        controller.pointController.text);
+                    Get.back();
+                  },
                   child: Text(
                     "Confirm",
                     style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600),

@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import '../modules/AddItem/bindings/add_item_binding.dart';
+import '../modules/AddItem/views/add_item_view.dart';
 import '../modules/RecycleSuccess/bindings/recycle_success_binding.dart';
 import '../modules/RecycleSuccess/views/recycle_success_view.dart';
 import '../modules/confirmation/bindings/confirmation_binding.dart';
@@ -85,6 +87,11 @@ class AppPages {
       name: _Paths.RECYCLE_SUCCESS,
       page: () => const RecycleSuccessView(),
       binding: RecycleSuccessBinding(),
+    ),
+    GetPage(
+      name: _Paths.ADD_ITEM,
+      page: () => AddItemView(),
+      binding: AddItemBinding(),
     ),
   ];
 }

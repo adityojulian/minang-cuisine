@@ -7,6 +7,8 @@ import 'package:pickles_rapyd/app/routes/app_pages.dart';
 import '../controllers/inventory_controller.dart';
 
 class InventoryView extends GetView<InventoryController> {
+  // final controller = Get.put(InventoryController());
+
   void openBottomSheet() {
     Get.bottomSheet(
       Container(
