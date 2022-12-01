@@ -6,7 +6,7 @@ import 'package:pickles_rapyd/app/models/ProfileModel.dart';
 class HomepageController extends GetxController {
   TextEditingController pointController = TextEditingController(text: "1");
   TextEditingController gbpController = TextEditingController(text: "1");
-  late ProfileModel profile;
+  late ProfileModel profile = ProfileModel();
 
   @override
   void onClose() {
@@ -17,8 +17,8 @@ class HomepageController extends GetxController {
 
   @override
   void onInit() async {
+    super.onInit();
     profile = await ProfileProvider().getProfile();
     update();
-    super.onInit();
   }
 }

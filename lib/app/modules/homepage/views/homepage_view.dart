@@ -185,451 +185,455 @@ class HomepageView extends GetView<HomepageController> {
 
   @override
   Widget build(BuildContext context) {
+    // Get.put(HomepageController());
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'Homepage',
-          style: TextStyle(
-              color: Colors.black, fontSize: 20, fontWeight: FontWeight.w600),
+        appBar: AppBar(
+          title: const Text(
+            'Homepage',
+            style: TextStyle(
+                color: Colors.black, fontSize: 20, fontWeight: FontWeight.w600),
+          ),
+          elevation: 0,
+          backgroundColor: Colors.transparent,
+          shadowColor: Colors.transparent,
+          centerTitle: true,
         ),
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-        shadowColor: Colors.transparent,
-        centerTitle: true,
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Container(
-              height: 50,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Column(
+        body: GetBuilder<HomepageController>(
+          builder: (c) => SingleChildScrollView(
+            child: Column(
+              children: [
+                Container(
+                  height: 50,
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Text(
-                        controller.profile.points.toString(),
-                        style: TextStyle(
-                            fontWeight: FontWeight.w700, fontSize: 15),
-                      ),
-                      Text("Points")
-                    ],
-                  ),
-                  VerticalDivider(
-                      indent: 10,
-                      endIndent: 10,
-                      color: Color.fromRGBO(0, 0, 0, 0.3)),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Text(
-                        "0",
-                        style: TextStyle(
-                            fontWeight: FontWeight.w700, fontSize: 15),
-                      ),
-                      Text("Recycled")
-                    ],
-                  ),
-                  VerticalDivider(
-                    indent: 10,
-                    endIndent: 10,
-                    color: Color.fromRGBO(0, 0, 0, 0.3),
-                  ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Text(
-                        "~0g",
-                        style: TextStyle(
-                            fontWeight: FontWeight.w700, fontSize: 15),
-                      ),
-                      Text("CO2")
-                    ],
-                  ),
-                ],
-              ),
-            ),
-            Divider(thickness: 1),
-            Padding(
-              padding: const EdgeInsets.only(left: 16, right: 16, top: 37),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    children: [
-                      Card(
-                        color: Color.fromRGBO(93, 176, 117, 1),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: InkWell(
-                          borderRadius: BorderRadius.circular(20),
-                          onTap: () => openBottomSheet(),
-                          child: SizedBox(
-                            height: 119,
-                            width: 150,
-                            child: Image(
-                              image: AssetImage("assets/money_icon.png"),
-                            ),
-                          ),
-                        ),
-                      ),
-                      SizedBox(height: 16),
-                      Center(
-                        child: Text(
-                          "Convert points to money",
-                          style: TextStyle(
-                              fontSize: 11, fontWeight: FontWeight.w700),
-                        ),
-                      )
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Card(
-                        color: Color.fromRGBO(93, 176, 117, 1),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: InkWell(
-                          borderRadius: BorderRadius.circular(20),
-                          onTap: () => Get.toNamed(Routes.DONATION),
-                          child: SizedBox(
-                            height: 119,
-                            width: 150,
-                            child: Image(
-                              image: AssetImage("assets/donation.png"),
-                            ),
-                          ),
-                        ),
-                      ),
-                      SizedBox(height: 16),
-                      Center(
-                        child: Text(
-                          "Donate to charity",
-                          style: TextStyle(
-                              fontSize: 11, fontWeight: FontWeight.w700),
-                        ),
-                      )
-                    ],
-                  )
-                ],
-              ),
-            ),
-            SizedBox(height: 36),
-            Text(
-              "Recycled Items",
-              style: TextStyle(fontWeight: FontWeight.w700, fontSize: 14),
-            ),
-            SizedBox(height: 15),
-            Divider(thickness: 1),
-            Padding(
-              padding: const EdgeInsets.only(left: 16, right: 16, top: 18),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Color.fromRGBO(227, 227, 227, 1)),
-                    height: 55,
-                    width: 150,
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(top: 7.0, bottom: 6),
-                          child: Text(
-                            "This Month",
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Text(
+                            c.profile.points.toString(),
                             style: TextStyle(
-                                color: Colors.black54,
-                                fontWeight: FontWeight.w700,
-                                fontSize: 9),
+                                fontWeight: FontWeight.w700, fontSize: 15),
                           ),
-                        ),
-                        Text(
-                          "900K",
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.w700,
-                              fontSize: 13),
-                        )
-                      ],
-                    ),
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Color.fromRGBO(227, 227, 227, 1)),
-                    height: 55,
-                    width: 150,
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(top: 7.0, bottom: 6),
-                          child: Text(
-                            "Total",
+                          Text("Points")
+                        ],
+                      ),
+                      VerticalDivider(
+                          indent: 10,
+                          endIndent: 10,
+                          color: Color.fromRGBO(0, 0, 0, 0.3)),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Text(
+                            "0",
                             style: TextStyle(
-                                color: Colors.black54,
-                                fontWeight: FontWeight.w700,
-                                fontSize: 9),
+                                fontWeight: FontWeight.w700, fontSize: 15),
                           ),
-                        ),
-                        Text(
-                          "30M",
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.w700,
-                              fontSize: 13),
-                        )
-                      ],
-                    ),
-                  )
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 16, right: 16, top: 21),
-              child: Container(
-                height: 357,
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.black26),
-                  borderRadius: BorderRadius.circular(10),
+                          Text("Recycled")
+                        ],
+                      ),
+                      VerticalDivider(
+                        indent: 10,
+                        endIndent: 10,
+                        color: Color.fromRGBO(0, 0, 0, 0.3),
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Text(
+                            "~0g",
+                            style: TextStyle(
+                                fontWeight: FontWeight.w700, fontSize: 15),
+                          ),
+                          Text("CO2")
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
-              ),
+                Divider(thickness: 1),
+                Padding(
+                  padding: const EdgeInsets.only(left: 16, right: 16, top: 37),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        children: [
+                          Card(
+                            color: Color.fromRGBO(93, 176, 117, 1),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            child: InkWell(
+                              borderRadius: BorderRadius.circular(20),
+                              onTap: () => openBottomSheet(),
+                              child: SizedBox(
+                                height: 119,
+                                width: 150,
+                                child: Image(
+                                  image: AssetImage("assets/money_icon.png"),
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: 16),
+                          Center(
+                            child: Text(
+                              "Convert points to money",
+                              style: TextStyle(
+                                  fontSize: 11, fontWeight: FontWeight.w700),
+                            ),
+                          )
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          Card(
+                            color: Color.fromRGBO(93, 176, 117, 1),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            child: InkWell(
+                              borderRadius: BorderRadius.circular(20),
+                              onTap: () => Get.toNamed(Routes.DONATION),
+                              child: SizedBox(
+                                height: 119,
+                                width: 150,
+                                child: Image(
+                                  image: AssetImage("assets/donation.png"),
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: 16),
+                          Center(
+                            child: Text(
+                              "Donate to charity",
+                              style: TextStyle(
+                                  fontSize: 11, fontWeight: FontWeight.w700),
+                            ),
+                          )
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+                SizedBox(height: 36),
+                Text(
+                  "Recycled Items",
+                  style: TextStyle(fontWeight: FontWeight.w700, fontSize: 14),
+                ),
+                SizedBox(height: 15),
+                Divider(thickness: 1),
+                Padding(
+                  padding: const EdgeInsets.only(left: 16, right: 16, top: 18),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: Color.fromRGBO(227, 227, 227, 1)),
+                        height: 55,
+                        width: 150,
+                        child: Column(
+                          children: [
+                            Padding(
+                              padding:
+                                  const EdgeInsets.only(top: 7.0, bottom: 6),
+                              child: Text(
+                                "This Month",
+                                style: TextStyle(
+                                    color: Colors.black54,
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 9),
+                              ),
+                            ),
+                            Text(
+                              "900K",
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 13),
+                            )
+                          ],
+                        ),
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: Color.fromRGBO(227, 227, 227, 1)),
+                        height: 55,
+                        width: 150,
+                        child: Column(
+                          children: [
+                            Padding(
+                              padding:
+                                  const EdgeInsets.only(top: 7.0, bottom: 6),
+                              child: Text(
+                                "Total",
+                                style: TextStyle(
+                                    color: Colors.black54,
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 9),
+                              ),
+                            ),
+                            Text(
+                              "30M",
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 13),
+                            )
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 16, right: 16, top: 21),
+                  child: Container(
+                    height: 357,
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black26),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 30),
+                  child: Text(
+                    "Recycled Materials",
+                    style: TextStyle(fontWeight: FontWeight.w700, fontSize: 14),
+                  ),
+                ),
+                SizedBox(height: 15),
+                Divider(thickness: 1),
+                SizedBox(height: 40),
+                Padding(
+                  padding: const EdgeInsets.only(left: 27, right: 27, top: 21),
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "Material",
+                                style: TextStyle(
+                                    fontSize: 10, fontWeight: FontWeight.w400),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Text(
+                                "This Month",
+                                style: TextStyle(
+                                    fontSize: 10, fontWeight: FontWeight.w400),
+                              ),
+                              SizedBox(
+                                width: 18,
+                              ),
+                              Text(
+                                "Average",
+                                style: TextStyle(
+                                    fontSize: 10, fontWeight: FontWeight.w400),
+                              )
+                            ],
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Container(
+                                width: 21,
+                                height: 21,
+                                margin: EdgeInsets.only(right: 16),
+                                decoration: BoxDecoration(
+                                    color: Color.fromRGBO(138, 198, 221, 1),
+                                    shape: BoxShape.circle),
+                              ),
+                              Text(
+                                "Glass",
+                                style: TextStyle(
+                                    fontSize: 14, fontWeight: FontWeight.w400),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Text(
+                                "60T",
+                                style: TextStyle(
+                                    fontSize: 14, fontWeight: FontWeight.w700),
+                              ),
+                              SizedBox(
+                                width: 30,
+                              ),
+                              Text(
+                                "100T",
+                                style: TextStyle(
+                                    fontSize: 14, fontWeight: FontWeight.w700),
+                              )
+                            ],
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Container(
+                                width: 21,
+                                height: 21,
+                                margin: EdgeInsets.only(right: 16),
+                                decoration: BoxDecoration(
+                                    color: Color.fromRGBO(135, 121, 111, 1),
+                                    shape: BoxShape.circle),
+                              ),
+                              Text(
+                                "Plastic",
+                                style: TextStyle(
+                                    fontSize: 14, fontWeight: FontWeight.w400),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Text(
+                                "60T",
+                                style: TextStyle(
+                                    fontSize: 14, fontWeight: FontWeight.w700),
+                              ),
+                              SizedBox(
+                                width: 30,
+                              ),
+                              Text(
+                                "100T",
+                                style: TextStyle(
+                                    fontSize: 14, fontWeight: FontWeight.w700),
+                              )
+                            ],
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Container(
+                                width: 21,
+                                height: 21,
+                                margin: EdgeInsets.only(right: 16),
+                                decoration: BoxDecoration(
+                                    color: Color.fromRGBO(215, 224, 87, 1),
+                                    shape: BoxShape.circle),
+                              ),
+                              Text(
+                                "Paper",
+                                style: TextStyle(
+                                    fontSize: 14, fontWeight: FontWeight.w400),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Text(
+                                "60T",
+                                style: TextStyle(
+                                    fontSize: 14, fontWeight: FontWeight.w700),
+                              ),
+                              SizedBox(
+                                width: 30,
+                              ),
+                              Text(
+                                "100T",
+                                style: TextStyle(
+                                    fontSize: 14, fontWeight: FontWeight.w700),
+                              )
+                            ],
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Container(
+                                width: 21,
+                                height: 21,
+                                margin: EdgeInsets.only(right: 16),
+                                decoration: BoxDecoration(
+                                    color: Color.fromRGBO(241, 108, 122, 1),
+                                    shape: BoxShape.circle),
+                              ),
+                              Text(
+                                "Metal",
+                                style: TextStyle(
+                                    fontSize: 14, fontWeight: FontWeight.w400),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Text(
+                                "60T",
+                                style: TextStyle(
+                                    fontSize: 14, fontWeight: FontWeight.w700),
+                              ),
+                              SizedBox(
+                                width: 30,
+                              ),
+                              Text(
+                                "100T",
+                                style: TextStyle(
+                                    fontSize: 14, fontWeight: FontWeight.w700),
+                              )
+                            ],
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                        height: 30,
+                      )
+                    ],
+                  ),
+                )
+              ],
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 30),
-              child: Text(
-                "Recycled Materials",
-                style: TextStyle(fontWeight: FontWeight.w700, fontSize: 14),
-              ),
-            ),
-            SizedBox(height: 15),
-            Divider(thickness: 1),
-            SizedBox(height: 40),
-            Padding(
-              padding: const EdgeInsets.only(left: 27, right: 27, top: 21),
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            "Material",
-                            style: TextStyle(
-                                fontSize: 10, fontWeight: FontWeight.w400),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Text(
-                            "This Month",
-                            style: TextStyle(
-                                fontSize: 10, fontWeight: FontWeight.w400),
-                          ),
-                          SizedBox(
-                            width: 18,
-                          ),
-                          Text(
-                            "Average",
-                            style: TextStyle(
-                                fontSize: 10, fontWeight: FontWeight.w400),
-                          )
-                        ],
-                      )
-                    ],
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Container(
-                            width: 21,
-                            height: 21,
-                            margin: EdgeInsets.only(right: 16),
-                            decoration: BoxDecoration(
-                                color: Color.fromRGBO(138, 198, 221, 1),
-                                shape: BoxShape.circle),
-                          ),
-                          Text(
-                            "Glass",
-                            style: TextStyle(
-                                fontSize: 14, fontWeight: FontWeight.w400),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Text(
-                            "60T",
-                            style: TextStyle(
-                                fontSize: 14, fontWeight: FontWeight.w700),
-                          ),
-                          SizedBox(
-                            width: 30,
-                          ),
-                          Text(
-                            "100T",
-                            style: TextStyle(
-                                fontSize: 14, fontWeight: FontWeight.w700),
-                          )
-                        ],
-                      )
-                    ],
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Container(
-                            width: 21,
-                            height: 21,
-                            margin: EdgeInsets.only(right: 16),
-                            decoration: BoxDecoration(
-                                color: Color.fromRGBO(135, 121, 111, 1),
-                                shape: BoxShape.circle),
-                          ),
-                          Text(
-                            "Plastic",
-                            style: TextStyle(
-                                fontSize: 14, fontWeight: FontWeight.w400),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Text(
-                            "60T",
-                            style: TextStyle(
-                                fontSize: 14, fontWeight: FontWeight.w700),
-                          ),
-                          SizedBox(
-                            width: 30,
-                          ),
-                          Text(
-                            "100T",
-                            style: TextStyle(
-                                fontSize: 14, fontWeight: FontWeight.w700),
-                          )
-                        ],
-                      )
-                    ],
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Container(
-                            width: 21,
-                            height: 21,
-                            margin: EdgeInsets.only(right: 16),
-                            decoration: BoxDecoration(
-                                color: Color.fromRGBO(215, 224, 87, 1),
-                                shape: BoxShape.circle),
-                          ),
-                          Text(
-                            "Paper",
-                            style: TextStyle(
-                                fontSize: 14, fontWeight: FontWeight.w400),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Text(
-                            "60T",
-                            style: TextStyle(
-                                fontSize: 14, fontWeight: FontWeight.w700),
-                          ),
-                          SizedBox(
-                            width: 30,
-                          ),
-                          Text(
-                            "100T",
-                            style: TextStyle(
-                                fontSize: 14, fontWeight: FontWeight.w700),
-                          )
-                        ],
-                      )
-                    ],
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Container(
-                            width: 21,
-                            height: 21,
-                            margin: EdgeInsets.only(right: 16),
-                            decoration: BoxDecoration(
-                                color: Color.fromRGBO(241, 108, 122, 1),
-                                shape: BoxShape.circle),
-                          ),
-                          Text(
-                            "Metal",
-                            style: TextStyle(
-                                fontSize: 14, fontWeight: FontWeight.w400),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Text(
-                            "60T",
-                            style: TextStyle(
-                                fontSize: 14, fontWeight: FontWeight.w700),
-                          ),
-                          SizedBox(
-                            width: 30,
-                          ),
-                          Text(
-                            "100T",
-                            style: TextStyle(
-                                fontSize: 14, fontWeight: FontWeight.w700),
-                          )
-                        ],
-                      )
-                    ],
-                  ),
-                  SizedBox(
-                    height: 30,
-                  )
-                ],
-              ),
-            )
-          ],
-        ),
-      ),
-    );
+          ),
+        ));
   }
 }

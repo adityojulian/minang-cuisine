@@ -8,7 +8,7 @@ const {
     updateDoc,
 } = require("firebase/firestore");
 
-const { grocery_items } = require("../../database/firebase");
+const { grocery_items, batch } = require("../../database/firebase");
 
 const asyncHandler = require("express-async-handler");
 
@@ -34,6 +34,24 @@ const getItemDesc = asyncHandler(async (req, res) => {
     }
 });
 
+const addItems = asyncHandler(async (req, res) => {
+    const { items } = req.body;
+    console.log({ items });
+    items.forEach((e) => {
+        batch.set(doc(grocery_items), {
+            id: e.id,
+            material: e.material,
+            name: e.name,
+            recycle: e.recycle,
+            type: e.type,
+            weight: e.weight,
+        });
+    });
+    const result = await batch.commit();
+    res.json(result);
+});
+
 module.exports = {
     getItemDesc,
+    addItems,
 };

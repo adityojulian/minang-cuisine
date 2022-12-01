@@ -46,7 +46,10 @@ const transaction_recycle_inventory = collection(
 );
 
 // DONATION
-const donation = collection(db, "donation");
+const donation = collection(db, "donate");
+
+// LOCATION
+const location = collection(db, "location");
 
 module.exports = {
     db,
@@ -65,4 +68,5 @@ module.exports = {
     trash_bank,
     trash_bank_inventory,
     donation,
+    location,
 };

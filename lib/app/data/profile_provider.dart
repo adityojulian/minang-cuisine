@@ -8,7 +8,7 @@ class ProfileProvider extends GetConnect {
   FirebaseAuth auth = FirebaseAuth.instance;
 
   Future<ProfileModel> getProfile() async {
-    var userId = {"ini id saya": "${auth.currentUser!.uid}"};
+    var userId = {"id": "${auth.currentUser!.uid}"};
 
     final response =
         await post("http://10.0.2.2:3000/recycler/get-info", userId);
