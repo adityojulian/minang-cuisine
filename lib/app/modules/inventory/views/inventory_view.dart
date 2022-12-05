@@ -182,13 +182,13 @@ class InventoryView extends GetView<InventoryController> {
                                 spacing: 8,
                                 children: [
                                   Chip(
-                                    label: Text(
-                                        controller.foundItems[index].type!),
+                                    label: Text(controller
+                                        .foundItems[index].type!.capitalize!),
                                   ),
                                   Chip(
-                                    label: Text(controller
-                                        .foundItems[index].weight
-                                        .toString()),
+                                    label: Text(
+                                        "${controller.foundItems[index].weight} kg"
+                                            .toString()),
                                   )
                                 ],
                               ),
@@ -200,7 +200,9 @@ class InventoryView extends GetView<InventoryController> {
                                   : controller.checkboxRemove(
                                       controller.foundItems[index])),
                               title: Text(
-                                controller.foundItems[index].name.toString(),
+                                controller.foundItems[index].name
+                                    .toString()
+                                    .capitalize!,
                                 style: TextStyle(
                                     fontSize: 14, fontWeight: FontWeight.w400),
                               ),

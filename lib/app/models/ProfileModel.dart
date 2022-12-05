@@ -4,13 +4,15 @@ class ProfileModel {
   String? lastName;
   String? ewallet;
   String? firstName;
+  int? balance;
 
   ProfileModel(
       {this.points,
       this.password,
       this.lastName,
       this.ewallet,
-      this.firstName});
+      this.firstName,
+      this.balance});
 
   ProfileModel.fromJson(Map<String, dynamic> json) {
     points = json['points'];
@@ -18,6 +20,7 @@ class ProfileModel {
     lastName = json['last_name'];
     ewallet = json['ewallet'];
     firstName = json['first_name'];
+    balance = json['balance'];
   }
 
   Map<String, dynamic> toJson() {
@@ -27,6 +30,7 @@ class ProfileModel {
     data['last_name'] = this.lastName;
     data['ewallet'] = this.ewallet;
     data['first_name'] = this.firstName;
+    data['balance'] = this.balance;
     return data;
   }
 }

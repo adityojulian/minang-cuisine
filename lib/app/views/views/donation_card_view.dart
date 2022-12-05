@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:pickles_rapyd/app/models/DonationModel.dart';
 import 'package:pickles_rapyd/app/routes/app_pages.dart';
 
 class DonationCardView extends GetView {
+  DonationCardView({super.key, required this.donation});
+  DonationModel donation;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -15,7 +19,7 @@ class DonationCardView extends GetView {
         //   borderRadius: BorderRadius.circular(10),
         // ),
         child: InkWell(
-          onTap: () => Get.toNamed(Routes.DONATION_DETAIL),
+          onTap: () => Get.toNamed(Routes.DONATION_DETAIL, arguments: donation),
           child: Column(
             // mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -24,7 +28,7 @@ class DonationCardView extends GetView {
                 alignment: Alignment.center,
                 children: [
                   Image(
-                    image: AssetImage("assets/donation_one.png"),
+                    image: AssetImage(donation.asset!),
                     height: 111,
                     fit: BoxFit.cover,
                   )
@@ -39,7 +43,7 @@ class DonationCardView extends GetView {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "The Hunger Project UK",
+                      donation.name!,
                       textAlign: TextAlign.start,
                       style:
                           TextStyle(fontWeight: FontWeight.w700, fontSize: 12),
@@ -48,7 +52,7 @@ class DonationCardView extends GetView {
                       height: 3,
                     ),
                     Text(
-                      "UK’s government project for developing countries",
+                      donation.desc!,
                       textAlign: TextAlign.start,
                       style:
                           TextStyle(fontWeight: FontWeight.w400, fontSize: 11),

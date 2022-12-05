@@ -67,17 +67,23 @@ class DonationView extends GetView<DonationController> {
             ),
           ),
           Divider(thickness: 1),
-          Expanded(
-            child: ListView.separated(
-              separatorBuilder: (BuildContext context, int index) =>
-                  const SizedBox(
-                height: 15,
-              ),
-              // physics: NeverScrollableScrollPhysics(),
-              // shrinkWrap: true,
-              itemCount: 5,
-              itemBuilder: ((context, index) => DonationCardView()),
-            ),
+          GetBuilder<DonationController>(
+            builder: (c) {
+              return Expanded(
+                child: ListView.separated(
+                  separatorBuilder: (BuildContext context, int index) =>
+                      const SizedBox(
+                    height: 15,
+                  ),
+                  // physics: NeverScrollableScrollPhysics(),
+                  // shrinkWrap: true,
+                  itemCount: c.donations.length,
+                  itemBuilder: ((context, index) => DonationCardView(
+                        donation: c.donations[index],
+                      )),
+                ),
+              );
+            },
           ),
         ],
       ),

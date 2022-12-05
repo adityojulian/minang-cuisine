@@ -5,6 +5,7 @@ class InventoryItemModel {
   String? id;
   String? name;
   String? type;
+  String? bought_id;
 
   InventoryItemModel(
       {this.recycle,
@@ -12,7 +13,8 @@ class InventoryItemModel {
       this.weight,
       this.id,
       this.name,
-      this.type});
+      this.type,
+      this.bought_id});
 
   InventoryItemModel.fromJson(Map<String, dynamic> json) {
     recycle = json['recycle'];
@@ -21,6 +23,7 @@ class InventoryItemModel {
     id = json['id'];
     name = json['name'];
     type = json['type'];
+    bought_id = json['bought_id'];
   }
 
   Map<String, dynamic> toJson() {
@@ -31,6 +34,7 @@ class InventoryItemModel {
     data['id'] = this.id;
     data['name'] = this.name;
     data['type'] = this.type;
+    data['bought_id'] = this.bought_id;
     return data;
   }
 }

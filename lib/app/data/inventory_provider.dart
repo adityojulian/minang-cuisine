@@ -13,8 +13,8 @@ class InventoryProvider extends GetConnect {
 
     print(body);
 
-    final response = await post(
-        "https://3228-86-26-161-148.eu.ngrok.io/recycler/get-items", userId);
+    final response =
+        await post("http://10.0.2.2:3000/recycler/get-items", userId);
 
     if (response.status.hasError) {
       return Future.error(response.statusText.toString());

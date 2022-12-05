@@ -2,186 +2,190 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:pickles_rapyd/app/routes/app_pages.dart';
-import 'package:pickles_rapyd/app/data/profile_provider.dart';
 
 import '../controllers/homepage_controller.dart';
 
 class HomepageView extends GetView<HomepageController> {
   void openBottomSheet() {
     Get.bottomSheet(
-      Container(
-        child: Padding(
-          padding: const EdgeInsets.only(top: 30, left: 46, right: 46),
-          child: Column(
-            children: [
-              Container(
-                width: 32,
-                height: 4,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(100),
-                    color: Colors.black26),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 21, bottom: 24),
-                child: Text(
-                  "How many?",
-                  style: TextStyle(fontWeight: FontWeight.w700, fontSize: 17),
+      GetBuilder<HomepageController>(builder: (c) {
+        return Container(
+          child: Padding(
+            padding: const EdgeInsets.only(top: 30, left: 46, right: 46),
+            child: Column(
+              children: [
+                Container(
+                  width: 32,
+                  height: 4,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(100),
+                      color: Colors.black26),
                 ),
-              ),
-              Row(
-                children: [
-                  Text(
-                    "Point Balance",
-                    style: TextStyle(fontWeight: FontWeight.w400, fontSize: 14),
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Container(
-                    alignment: Alignment.center,
-                    height: 21,
-                    width: 150,
-                    decoration: BoxDecoration(
-                      color: Color.fromRGBO(112, 185, 129, 1),
-                      shape: BoxShape.rectangle,
-                    ),
-                    child: Text(
-                      controller.profile.points.toString(),
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontWeight: FontWeight.w700,
-                        fontSize: 14,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 44,
-              ),
-              Row(
-                children: [
-                  SizedBox(
-                    height: 35,
-                    width: 66,
-                    child: TextField(
-                      controller: controller.pointController,
-                      keyboardType: TextInputType.number,
-                      onChanged: (value) => controller.convertPointToGBP(value),
-                      cursorColor: Color.fromRGBO(112, 185, 129, 1),
-                      style:
-                          TextStyle(fontSize: 15, fontWeight: FontWeight.w400),
-                      decoration: InputDecoration(
-                        contentPadding:
-                            EdgeInsets.symmetric(horizontal: 11, vertical: 2),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide:
-                              const BorderSide(color: Colors.grey, width: 1),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide:
-                              const BorderSide(color: Colors.grey, width: 1),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide: const BorderSide(
-                              color: Color.fromRGBO(112, 185, 129, 1),
-                              width: 2),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 11),
-                    child: Text(
-                      "Points",
-                      style:
-                          TextStyle(fontWeight: FontWeight.w400, fontSize: 15),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 21),
-                    child: Text(
-                      "=",
-                      style:
-                          TextStyle(fontWeight: FontWeight.w400, fontSize: 18),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 35,
-                    width: 66,
-                    child: TextField(
-                      controller: controller.gbpController,
-                      onChanged: (value) => controller.convertGBPtoPoint(value),
-                      keyboardType: TextInputType.number,
-                      cursorColor: Color.fromRGBO(112, 185, 129, 1),
-                      style:
-                          TextStyle(fontSize: 15, fontWeight: FontWeight.w400),
-                      decoration: InputDecoration(
-                        contentPadding:
-                            EdgeInsets.symmetric(horizontal: 11, vertical: 2),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide:
-                              const BorderSide(color: Colors.grey, width: 1),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide:
-                              const BorderSide(color: Colors.grey, width: 1),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide: const BorderSide(
-                              color: Color.fromRGBO(112, 185, 129, 1),
-                              width: 2),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 11),
-                    child: Text(
-                      "GBP",
-                      style:
-                          TextStyle(fontWeight: FontWeight.w400, fontSize: 15),
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 54,
-              ),
-              SizedBox(
-                height: 32,
-                // width: 152,
-                child: ElevatedButton(
-                  onPressed: () {
-                    controller.reqConvertPoints(controller.profile.ewallet!,
-                        controller.pointController.text);
-                    Get.back();
-                  },
+                Padding(
+                  padding: const EdgeInsets.only(top: 21, bottom: 24),
                   child: Text(
-                    "Confirm",
-                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
+                    "How many?",
+                    style: TextStyle(fontWeight: FontWeight.w700, fontSize: 17),
                   ),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Color.fromRGBO(76, 168, 98, 0.8),
-                    fixedSize: const Size(152, 32),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
+                ),
+                Row(
+                  children: [
+                    Text(
+                      "Point Balance",
+                      style:
+                          TextStyle(fontWeight: FontWeight.w400, fontSize: 14),
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Container(
+                      alignment: Alignment.center,
+                      height: 21,
+                      width: 50,
+                      decoration: BoxDecoration(
+                        color: Color.fromRGBO(112, 185, 129, 1),
+                        shape: BoxShape.rectangle,
+                      ),
+                      child: Text(
+                        c.profile.points.toString(),
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontWeight: FontWeight.w700,
+                          fontSize: 14,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 44,
+                ),
+                Row(
+                  children: [
+                    SizedBox(
+                      height: 35,
+                      width: 66,
+                      child: TextField(
+                        controller: c.pointController,
+                        keyboardType: TextInputType.number,
+                        onChanged: (value) => c.convertPointToGBP(value),
+                        cursorColor: Color.fromRGBO(112, 185, 129, 1),
+                        style: TextStyle(
+                            fontSize: 15, fontWeight: FontWeight.w400),
+                        decoration: InputDecoration(
+                          contentPadding:
+                              EdgeInsets.symmetric(horizontal: 11, vertical: 2),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                            borderSide:
+                                const BorderSide(color: Colors.grey, width: 1),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                            borderSide:
+                                const BorderSide(color: Colors.grey, width: 1),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                            borderSide: const BorderSide(
+                                color: Color.fromRGBO(112, 185, 129, 1),
+                                width: 2),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 11),
+                      child: Text(
+                        "Points",
+                        style: TextStyle(
+                            fontWeight: FontWeight.w400, fontSize: 15),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 21),
+                      child: Text(
+                        "=",
+                        style: TextStyle(
+                            fontWeight: FontWeight.w400, fontSize: 18),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 35,
+                      width: 66,
+                      child: TextField(
+                        controller: controller.gbpController,
+                        onChanged: (value) =>
+                            controller.convertGBPtoPoint(value),
+                        keyboardType: TextInputType.number,
+                        cursorColor: Color.fromRGBO(112, 185, 129, 1),
+                        style: TextStyle(
+                            fontSize: 15, fontWeight: FontWeight.w400),
+                        decoration: InputDecoration(
+                          contentPadding:
+                              EdgeInsets.symmetric(horizontal: 11, vertical: 2),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                            borderSide:
+                                const BorderSide(color: Colors.grey, width: 1),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                            borderSide:
+                                const BorderSide(color: Colors.grey, width: 1),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                            borderSide: const BorderSide(
+                                color: Color.fromRGBO(112, 185, 129, 1),
+                                width: 2),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 11),
+                      child: Text(
+                        "GBP",
+                        style: TextStyle(
+                            fontWeight: FontWeight.w400, fontSize: 15),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 54,
+                ),
+                SizedBox(
+                  height: 32,
+                  // width: 152,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      c.reqConvertPoints(
+                          c.profile.ewallet!, c.pointController.text);
+                      Get.back();
+                    },
+                    child: Text(
+                      "Confirm",
+                      style:
+                          TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color.fromRGBO(76, 168, 98, 0.8),
+                      fixedSize: const Size(152, 32),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
-        height: 350,
-      ),
+          height: 350,
+        );
+      }),
       backgroundColor: Colors.white,
       elevation: 0,
       shape: RoundedRectangleBorder(
@@ -220,10 +224,14 @@ class HomepageView extends GetView<HomepageController> {
                   Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Text(
-                        "0",
-                        style: TextStyle(
-                            fontWeight: FontWeight.w700, fontSize: 15),
+                      GetBuilder<HomepageController>(
+                        builder: (c) {
+                          return Text(
+                            c.profile.points.toString(),
+                            style: TextStyle(
+                                fontWeight: FontWeight.w700, fontSize: 15),
+                          );
+                        },
                       ),
                       Text("Points")
                     ],
@@ -293,12 +301,16 @@ class HomepageView extends GetView<HomepageController> {
                                     fontSize: 14,
                                     color: Colors.white),
                               ),
-                              Text(
-                                "£1000",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 20,
-                                    color: Colors.white),
+                              GetBuilder<HomepageController>(
+                                builder: (c) {
+                                  return Text(
+                                    "£" + c.profile.balance.toString(),
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w700,
+                                        fontSize: 20,
+                                        color: Colors.white),
+                                  );
+                                },
                               ),
                               Text(
                                 "Pickles : 1000",

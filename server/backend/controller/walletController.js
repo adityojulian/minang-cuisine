@@ -63,6 +63,15 @@ const retrieve = asyncHandler(async (req, res) => {
     }
 });
 
+const retrieveFunc = async (id) => {
+    try {
+        const result = await makeRequest("GET", `/v1/user/${id}`);
+        return result.body.data.accounts[0].balance;
+    } catch (err) {
+        return err;
+    }
+};
+
 // Transaction
 // @desc Conduct transaction between two wallet
 // @route Post /transaction-wallet
@@ -128,4 +137,5 @@ module.exports = {
     retrieve,
     response,
     responseFunc,
+    retrieveFunc,
 };

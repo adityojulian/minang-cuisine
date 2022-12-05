@@ -1,23 +1,19 @@
 import 'package:get/get.dart';
+import 'package:pickles_rapyd/app/data/donation_provider.dart';
+import 'package:pickles_rapyd/app/models/DonationModel.dart';
 
 class DonationController extends GetxController {
-  //TODO: Implement DonationController
+  List<DonationModel> donations = [];
 
-  final count = 0.obs;
+  getDonationList() async {
+    donations = await DonationProvider().getDonationList();
+    update();
+  }
+
   @override
-  void onInit() {
+  void onInit() async {
+    print("masuk on init donation");
+    await getDonationList();
     super.onInit();
   }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
 }

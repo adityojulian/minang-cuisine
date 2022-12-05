@@ -9,6 +9,7 @@ class HomepageController extends GetxController {
   late TextEditingController gbpController;
   late ProfileModel profile = ProfileModel();
   late int point;
+  late int balance;
 
   convertPointToGBP(String value) {
     gbpController.text = (int.parse(value) * 0.01).toString();
@@ -28,20 +29,24 @@ class HomepageController extends GetxController {
 
   @override
   void onClose() {
+    print("homepage controller ke clsoe");
     pointController.dispose();
     gbpController.dispose();
+    Get.delete<HomepageController>();
     super.onClose();
   }
 
   @override
   void onInit() async {
+    super.onInit();
+    print("homepage controller INIT");
     pointController = TextEditingController(text: initialPoint.toString());
     gbpController = TextEditingController(
         text: (int.parse(pointController.text) * 0.01).toString());
     // TODO: implement onInit
-    super.onInit();
     profile = await ProfileProvider().getProfile();
     point = profile.points!;
+    balance = profile.balance!;
     update();
   }
 }

@@ -363,8 +363,11 @@ class ConfirmationView extends GetView<ConfirmationController> {
                                             width: 86,
                                             height: 51,
                                             child: ElevatedButton(
-                                              onPressed: () => Get.offAllNamed(
-                                                  Routes.RECYCLE_SUCCESS),
+                                              onPressed: () async {
+                                                await controller.reqConfirm();
+                                                Get.offAllNamed(
+                                                    Routes.RECYCLE_SUCCESS);
+                                              },
                                               child: Text(
                                                 "OK",
                                                 style: TextStyle(
