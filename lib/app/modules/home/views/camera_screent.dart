@@ -65,6 +65,7 @@ class _CameraScreenState extends State<CameraScreen>
 
   @override
   void initState() {
+    print("available camera " + cameras.toString());
     onNewCameraSelected(cameras[0]);
     // homeTabController = TabController(length: homeTabs.length, vsync: this);
     super.initState();

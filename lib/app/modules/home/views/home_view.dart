@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -15,167 +16,178 @@ class HomeView extends GetView<HomeController> {
 
   void openBottomSheet() {
     Get.bottomSheet(
-      Container(
-        child: Padding(
-          padding: const EdgeInsets.all(30),
-          child: Column(
-            children: [
-              Container(
-                child: Row(children: [
-                  Container(
-                    width: 58,
-                    height: 58,
-                    decoration: new BoxDecoration(
-                        shape: BoxShape.circle,
-                        image: new DecorationImage(
-                            fit: BoxFit.fill,
-                            image: new NetworkImage(
-                                "https://i.imgur.com/BoN9kdC.png"))),
-                  ),
-                  SizedBox(width: 19),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Text(
-                              "Nutella & GO! -48g",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 16),
-                            ),
-                            SizedBox(width: 32),
-                            Container(
-                              // padding: EdgeInsets.all(3),
-                              height: 20,
-                              width: 76,
-                              decoration: BoxDecoration(
-                                  color: Color.fromRGBO(76, 168, 98, 0.8),
-                                  border: Border.all(color: Colors.transparent),
-                                  borderRadius: BorderRadius.circular(8)),
-                              child: Center(
-                                child: Text(
-                                  'Recycleable',
-                                  textAlign: TextAlign.center,
+      GetBuilder<HomeController>(builder: (c) {
+        return Container(
+          child: Padding(
+            padding: const EdgeInsets.all(30),
+            child: Column(
+              children: [
+                Container(
+                  child: Row(children: [
+                    Container(
+                      width: 58,
+                      height: 58,
+                      decoration: new BoxDecoration(
+                          shape: BoxShape.circle,
+                          image: new DecorationImage(
+                              fit: BoxFit.fill,
+                              image: new NetworkImage(
+                                  "https://i.imgur.com/BoN9kdC.png"))),
+                    ),
+                    SizedBox(width: 19),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              SizedBox(
+                                width: 135,
+                                height: 30,
+                                child: AutoSizeText(
+                                  c.itemName,
+                                  minFontSize: 12,
+                                  maxLines: 2,
+                                  overflow: TextOverflow.ellipsis,
                                   style: TextStyle(
-                                      fontSize: 9,
                                       fontWeight: FontWeight.bold,
-                                      color: Colors.white),
+                                      fontSize: 16),
                                 ),
                               ),
-                            ),
-                          ]),
-                      SizedBox(height: 10),
-                      Container(
-                          child: Align(
-                              alignment: Alignment.topLeft,
-                              child: Text(
-                                "Nutella, Ferrero",
-                                textAlign: TextAlign.start,
-                                style: TextStyle(fontSize: 12),
-                              )))
-                    ],
-                  ),
-                ]),
-              ),
-              SizedBox(height: 8),
-              Container(
-                // width: 330,
-                height: 61,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    color: Color.fromRGBO(217, 217, 217, 1)),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [Text("MATERIAL"), Text("Plastic")],
+                              SizedBox(width: 32),
+                              Container(
+                                // padding: EdgeInsets.all(3),
+                                height: 20,
+                                width: 76,
+                                decoration: BoxDecoration(
+                                    color: Color.fromRGBO(76, 168, 98, 0.8),
+                                    border:
+                                        Border.all(color: Colors.transparent),
+                                    borderRadius: BorderRadius.circular(8)),
+                                child: Center(
+                                  child: Text(
+                                    'Recycleable',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        fontSize: 9,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white),
+                                  ),
+                                ),
+                              ),
+                            ]),
+                        SizedBox(height: 10),
+                        Container(
+                            child: Align(
+                                alignment: Alignment.topLeft,
+                                child: Text(
+                                  "Nutella, Ferrero",
+                                  textAlign: TextAlign.start,
+                                  style: TextStyle(fontSize: 12),
+                                )))
+                      ],
                     ),
-                    VerticalDivider(
-                        indent: 10,
-                        endIndent: 10,
-                        color: Color.fromRGBO(0, 0, 0, 0.3)),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [Text("REWARD"), Text("1p")],
-                    ),
-                    VerticalDivider(
-                      indent: 10,
-                      endIndent: 10,
-                      color: Color.fromRGBO(0, 0, 0, 0.3),
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [Text("SAVED C02"), Text("No data")],
-                    ),
-                  ],
+                  ]),
                 ),
-              ),
-              SizedBox(height: 11),
-              Container(
-                height: 81,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    color: Color.fromRGBO(76, 168, 98, 0.3)),
-                child: Column(
+                SizedBox(height: 8),
+                Container(
+                  // width: 330,
+                  height: 61,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      color: Color.fromRGBO(217, 217, 217, 1)),
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Text(
-                        "Daily Reward Collected",
-                        style: TextStyle(
-                            fontSize: 12, fontWeight: FontWeight.w700),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [Text("MATERIAL"), Text(c.material)],
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 12, right: 12),
-                        child: Text(
-                          "You can only collect rewards for this package 1 time per day",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(fontSize: 12),
-                        ),
-                      )
-                    ]),
-              ),
-              SizedBox(height: 16),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: Color.fromRGBO(0, 0, 0, 0.8),
-                          fixedSize: const Size(152, 32),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8))),
-                      onPressed: () {
-                        Get.back();
-                      },
-                      child: const Text('Close',
+                      VerticalDivider(
+                          indent: 10,
+                          endIndent: 10,
+                          color: Color.fromRGBO(0, 0, 0, 0.3)),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [Text("REWARD"), Text("1p")],
+                      ),
+                      VerticalDivider(
+                        indent: 10,
+                        endIndent: 10,
+                        color: Color.fromRGBO(0, 0, 0, 0.3),
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [Text("SAVED C02"), Text("No data")],
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(height: 11),
+                Container(
+                  height: 81,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      color: Color.fromRGBO(76, 168, 98, 0.3)),
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Text(
+                          "Daily Reward Collected",
                           style: TextStyle(
-                              fontWeight: FontWeight.w400,
-                              fontSize: 12,
-                              color: Colors.white))),
-                  ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: Color.fromRGBO(76, 168, 98, 0.8),
-                          fixedSize: const Size(152, 32),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8))),
-                      onPressed: () {
-                        Get.back();
-                      },
-                      child: const Text(
-                        'Add to Inventory',
-                        style: TextStyle(
-                            fontWeight: FontWeight.w400, fontSize: 12),
-                      )),
-                ],
-              ),
-            ],
+                              fontSize: 12, fontWeight: FontWeight.w700),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 12, right: 12),
+                          child: Text(
+                            "You can only collect rewards for this package 1 time per day",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(fontSize: 12),
+                          ),
+                        )
+                      ]),
+                ),
+                SizedBox(height: 16),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: Color.fromRGBO(0, 0, 0, 0.8),
+                            fixedSize: const Size(152, 32),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8))),
+                        onPressed: () {
+                          Get.back();
+                        },
+                        child: const Text('Close',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w400,
+                                fontSize: 12,
+                                color: Colors.white))),
+                    ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: Color.fromRGBO(76, 168, 98, 0.8),
+                            fixedSize: const Size(152, 32),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8))),
+                        onPressed: () {
+                          Get.back();
+                        },
+                        child: const Text(
+                          'Add to Inventory',
+                          style: TextStyle(
+                              fontWeight: FontWeight.w400, fontSize: 12),
+                        )),
+                  ],
+                ),
+              ],
+            ),
           ),
-        ),
-        height: 350,
-      ),
+          height: 350,
+        );
+      }),
       backgroundColor: Colors.white,
       elevation: 0,
       shape: RoundedRectangleBorder(
@@ -233,10 +245,12 @@ class HomeView extends GetView<HomeController> {
                               builder: (c) {
                                 return MobileScanner(
                                     allowDuplicates: false,
-                                    onDetect: (barcode, args) {
+                                    onDetect: (barcode, args) async {
                                       if (barcode.rawValue == null) {
                                         debugPrint('Failed to scan Barcode');
                                       } else {
+                                        await controller
+                                            .getItemDesc(barcode.rawValue!);
                                         openBottomSheet();
                                         final String code = barcode.rawValue!;
                                         debugPrint('Barcode found! $code');
@@ -247,7 +261,10 @@ class HomeView extends GetView<HomeController> {
                           ),
                           Center(
                             child: ElevatedButton(
-                              onPressed: () => Get.toNamed(Routes.CROP),
+                              onPressed: () {
+                                controller.update();
+                                Get.toNamed(Routes.CROP);
+                              },
                               child: Text("Saya homepage"),
                             ),
                           ),

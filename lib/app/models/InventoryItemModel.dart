@@ -26,6 +26,15 @@ class InventoryItemModel {
     bought_id = json['bought_id'];
   }
 
+  InventoryItemModel.fromJsonItemDesc(Map<String, dynamic> json) {
+    recycle = json['recycle'];
+    material = json['material'];
+    weight = json['weight'];
+    id = json['id'];
+    name = json['name'];
+    type = json['type'];
+  }
+
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['recycle'] = this.recycle;
