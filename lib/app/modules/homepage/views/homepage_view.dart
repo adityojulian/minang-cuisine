@@ -46,15 +46,17 @@ class HomepageView extends GetView<HomepageController> {
                         color: Color.fromRGBO(112, 185, 129, 1),
                         shape: BoxShape.rectangle,
                       ),
-                      child: Text(
-                        c.profile.points.toString(),
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 14,
-                          color: Colors.white,
-                        ),
-                      ),
+                      child: c.profile != null
+                          ? Text(
+                              c.profile.points.toString(),
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontWeight: FontWeight.w700,
+                                fontSize: 14,
+                                color: Colors.white,
+                              ),
+                            )
+                          : CircularProgressIndicator(),
                     ),
                   ],
                 ),
@@ -208,7 +210,7 @@ class HomepageView extends GetView<HomepageController> {
         shadowColor: Colors.transparent,
         centerTitle: true,
         leading: IconButton(
-          onPressed: () => Get.toNamed(Routes.ADD_ITEM),
+          onPressed: () => Get.toNamed(Routes.SETUP_PAYMENT),
           icon: Icon(Icons.person_2_outlined),
           color: Colors.black,
         ),
@@ -226,11 +228,22 @@ class HomepageView extends GetView<HomepageController> {
                     children: [
                       GetBuilder<HomepageController>(
                         builder: (c) {
-                          return Text(
-                            c.profile.points.toString(),
-                            style: TextStyle(
-                                fontWeight: FontWeight.w700, fontSize: 15),
-                          );
+                          if (c.profile.points != null) {
+                            return Text(
+                              c.profile.points.toString(),
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w700, fontSize: 15),
+                            );
+                          } else {
+                            return SizedBox(
+                              height: 20,
+                              width: 20,
+                              child: CircularProgressIndicator(
+                                color: Color.fromRGBO(93, 176, 117, 1),
+                                strokeWidth: 2,
+                              ),
+                            );
+                          }
                         },
                       ),
                       Text("Points")
@@ -303,13 +316,20 @@ class HomepageView extends GetView<HomepageController> {
                               ),
                               GetBuilder<HomepageController>(
                                 builder: (c) {
-                                  return Text(
-                                    "£" + c.profile.balance.toString(),
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.w700,
-                                        fontSize: 20,
-                                        color: Colors.white),
-                                  );
+                                  if (c.profile.balance != null) {
+                                    return Text(
+                                      "£" + c.profile.balance.toString(),
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w700,
+                                          fontSize: 20,
+                                          color: Colors.white),
+                                    );
+                                  } else {
+                                    return CircularProgressIndicator(
+                                      color: Color.fromRGBO(93, 176, 117, 1),
+                                      strokeWidth: 4,
+                                    );
+                                  }
                                 },
                               ),
                               Text(
@@ -342,7 +362,7 @@ class HomepageView extends GetView<HomepageController> {
                         ),
                         child: InkWell(
                           borderRadius: BorderRadius.circular(20),
-                          onTap: () => openBottomSheet(),
+                          onTap: () => Get.toNamed(Routes.TRANSFER),
                           child: SizedBox(
                             height: 89,
                             width: 107,
