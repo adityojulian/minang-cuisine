@@ -196,6 +196,146 @@ class HomeView extends GetView<HomeController> {
     );
   }
 
+  void notFoundBottomSheet() {
+    Get.bottomSheet(
+      Container(
+        height: 360,
+        child: Padding(
+          padding: EdgeInsets.all(30),
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(bottom: 9.0),
+                child: Container(
+                  width: 32,
+                  height: 4,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(100),
+                      color: Colors.black26),
+                ),
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  SizedBox(height: 20),
+                  Container(
+                    // width: 300,
+                    height: 61,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8),
+                        color: Color.fromRGBO(217, 217, 217, 1)),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [Text("MATERIAL"), Text("Read on pack")],
+                        ),
+                        VerticalDivider(
+                            indent: 10,
+                            endIndent: 10,
+                            color: Color.fromRGBO(0, 0, 0, 0.3)),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [Text("REWARD"), Text("1p")],
+                        ),
+                        VerticalDivider(
+                          indent: 10,
+                          endIndent: 10,
+                          color: Color.fromRGBO(0, 0, 0, 0.3),
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [Text("SAVED C02"), Text("No data")],
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 18,
+                  ),
+                  Card(
+                    elevation: 0,
+                    color: Colors.transparent,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: SizedBox(
+                      height: 128,
+                      child: Stack(
+                        alignment: Alignment.center,
+                        children: [
+                          Image(
+                            image: AssetImage("assets/placeholder_nf.png"),
+                            fit: BoxFit.cover,
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Text(
+                                "Product Not Found",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 14,
+                                    color: Colors.white),
+                              ),
+                              Text(
+                                "Earn 1 extra point by adding package information",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 10,
+                                    color: Colors.white),
+                              ),
+                              SizedBox(
+                                height: 32,
+                                child: ElevatedButton(
+                                  onPressed: () => Get.toNamed(Routes.ADD_ITEM),
+                                  child: Text(
+                                    "Add Item",
+                                    style: TextStyle(
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w400),
+                                  ),
+                                  style: ElevatedButton.styleFrom(
+                                    elevation: 1,
+                                    backgroundColor:
+                                        Color.fromRGBO(76, 168, 98, 0.8),
+                                    fixedSize: const Size(152, 32),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  TextButton(
+                      onPressed: () => Get.back(),
+                      child: Text(
+                        "Close",
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400),
+                      ))
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+      backgroundColor: Colors.white,
+      elevation: 0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     // DashboardController dashboardController = Get.find<DashboardController>();
@@ -229,39 +369,45 @@ class HomeView extends GetView<HomeController> {
                   ],
                 ),
                 body: TabBarView(
-                    controller: controller.homeTabController,
-                    children: [
-                      Stack(
-                        children: [SizedBox(child: CameraScreen())],
-                      ),
-                      // Container()
-                      Stack(
-                        children: [
-                          SizedBox(
-                            width: Get.width,
-                            height: Get.height - AppBar().preferredSize.height,
-                            child: GetBuilder<BarcodeCameraController>(
-                              init: BarcodeCameraController(),
-                              builder: (c) {
-                                return MobileScanner(
-                                    allowDuplicates: false,
-                                    onDetect: (barcode, args) async {
-                                      if (barcode.rawValue == null) {
-                                        debugPrint('Failed to scan Barcode');
-                                      } else {
-                                        await controller
-                                            .getItemDesc(barcode.rawValue!);
-                                        openBottomSheet();
-                                        final String code = barcode.rawValue!;
-                                        debugPrint('Barcode found! $code');
-                                      }
-                                    });
-                              },
-                            ),
+                  controller: controller.homeTabController,
+                  children: [
+                    Stack(
+                      children: [SizedBox(child: CameraScreen())],
+                    ),
+                    // Container()
+                    Stack(
+                      children: [
+                        SizedBox(
+                          width: Get.width,
+                          height: Get.height - AppBar().preferredSize.height,
+                          child: GetBuilder<BarcodeCameraController>(
+                            init: BarcodeCameraController(),
+                            builder: (c) {
+                              return MobileScanner(
+                                  allowDuplicates: false,
+                                  onDetect: (barcode, args) async {
+                                    if (barcode.rawValue == null) {
+                                      debugPrint('Failed to scan Barcode');
+                                    } else {
+                                      await controller
+                                          .getItemDesc(barcode.rawValue!);
+                                      openBottomSheet();
+                                      final String code = barcode.rawValue!;
+                                      debugPrint('Barcode found! $code');
+                                    }
+                                  });
+                            },
                           ),
-                        ],
-                      ),
-                    ]),
+                        ),
+                        Center(
+                          child: ElevatedButton(
+                              onPressed: () => notFoundBottomSheet(),
+                              child: Text("Test Not Found")),
+                        )
+                      ],
+                    ),
+                  ],
+                ),
               )
             : Container();
       },

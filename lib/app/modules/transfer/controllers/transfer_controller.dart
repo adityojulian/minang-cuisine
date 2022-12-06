@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pickles_rapyd/app/data/profile_provider.dart';
 import 'package:pickles_rapyd/app/models/ProfileModel.dart';
@@ -11,6 +12,8 @@ class TransferController extends GetxController {
   List foundItems = [];
 
   final payList = ["John Doe", "Greg Hugo", "James Moore"];
+
+  TextEditingController amount = TextEditingController();
 
   @override
   void onInit() async {
