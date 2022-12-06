@@ -5,11 +5,11 @@ import 'package:google_ml_kit/google_ml_kit.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'dart:io';
 
+import 'package:pickles_rapyd/app/routes/app_pages.dart';
+
 class CropController extends GetxController {
   XFile? pickedFile;
   CroppedFile? croppedFile;
-  String? scannedText;
-  bool textScanning = false;
 
   // Crop function
   Future<void> cropImage(String imageSource) async {
@@ -32,26 +32,10 @@ class CropController extends GetxController {
       ],
     );
     if (cropImageFile != null) {
-      // croppedFile = cropImageFile;
-      scanImage(cropImageFile.path);
+      croppedFile = cropImageFile;
+      update();
+      // await scanImage(cropImageFile.path);
+      Get.toNamed(Routes.CROP_IMAGE_PREVIEW, arguments: croppedFile!.path);
     }
-  }
-
-  Future<void> scanImage(String imageSource) async {
-    textScanning = true;
-
-    final inputImage = InputImage.fromFilePath(imageSource);
-    final textDetector = GoogleMlKit.vision.textRecognizer();
-    RecognizedText recognizedText = await textDetector.processImage(inputImage);
-    await textDetector.close();
-
-    for (TextBlock block in recognizedText.blocks) {
-      for (TextLine line in block.lines) {
-        scannedText = scannedText! + line.text + "\n";
-      }
-    }
-    print("scannedText: " + scannedText!);
-    textScanning = false;
-    update();
   }
 }

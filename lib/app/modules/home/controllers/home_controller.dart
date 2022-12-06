@@ -9,7 +9,7 @@ class HomeController extends GetxController
   late InventoryItemModel itemDesc;
   String itemName = "Not Found";
   String material = "Not Found";
-  late final List<Tab> homeTabs = const <Tab>[
+  final List<Tab> homeTabs = const <Tab>[
     Tab(
       text: "Barcode",
     ),

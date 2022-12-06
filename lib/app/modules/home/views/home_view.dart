@@ -259,15 +259,6 @@ class HomeView extends GetView<HomeController> {
                               },
                             ),
                           ),
-                          Center(
-                            child: ElevatedButton(
-                              onPressed: () {
-                                controller.update();
-                                Get.toNamed(Routes.CROP);
-                              },
-                              child: Text("Saya homepage"),
-                            ),
-                          ),
                         ],
                       ),
                     ]),

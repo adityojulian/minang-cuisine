@@ -24,8 +24,8 @@ class ConfirmProvider extends GetConnect {
 
     print(body);
 
-    final response = await post(
-        "https://cd06-86-26-161-148.eu.ngrok.io/session/create-session", body);
+    final response =
+        await post("http://10.0.2.2:3000/session/create-session", body);
 
     if (response.status.hasError) {
       return Future.error(response.statusText.toString());

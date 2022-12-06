@@ -10,8 +10,8 @@ class ProfileProvider extends GetConnect {
   Future<ProfileModel> getProfile() async {
     var userId = {"id": "${auth.currentUser!.uid}"};
 
-    final response = await post(
-        "https://cd06-86-26-161-148.eu.ngrok.io/recycler/get-info", userId);
+    final response =
+        await post("http://10.0.2.2:3000/recycler/get-info", userId);
 
     if (response.status.hasError) {
       return Future.error(response.statusText.toString());
@@ -26,9 +26,8 @@ class ProfileProvider extends GetConnect {
   Future<String> convertPoints(String ewallet, int points) async {
     var userId = auth.currentUser!.uid;
     final body = json.encode({"recycler_ewallet": ewallet, "points": points});
-    final response = await post(
-        "https://cd06-86-26-161-148.eu.ngrok.io/recycler/points-to-money",
-        body);
+    final response =
+        await post("http://10.0.2.2:3000/recycler/points-to-money", body);
     if (response.status.hasError) {
       return Future.error(response.statusText.toString());
     } else {
@@ -41,8 +40,7 @@ class ProfileProvider extends GetConnect {
         "response": "accept"
       };
       final confirm_response = await post(
-          "https://cd06-86-26-161-148.eu.ngrok.io/recycler/confirm-transaction",
-          confirm_body);
+          "http://10.0.2.2:3000/recycler/confirm-transaction", confirm_body);
       return confirm_response.body.toString();
     }
   }

@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pickles_rapyd/app/routes/app_pages.dart';
 
-import '../controllers/donation_success_controller.dart';
+import '../controllers/transfer_success_controller.dart';
 
-class DonationSuccessView extends GetView<DonationSuccessController> {
-  const DonationSuccessView({Key? key}) : super(key: key);
+class TransferSuccessView extends GetView<TransferSuccessController> {
+  const TransferSuccessView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +32,7 @@ class DonationSuccessView extends GetView<DonationSuccessController> {
                   ),
                   Image.asset("assets/check_success.png"),
                   Text(
-                    "YOUR DONATION WAS SUCCESSFULL",
+                    "YOUR TRANSFER WAS SUCCESSFULL",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 16,
