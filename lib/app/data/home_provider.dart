@@ -15,7 +15,7 @@ class HomeProvider extends GetConnect {
     } else {
       if (response.body.length == 0) {
         print("Item Not Found");
-        return InventoryItemModel.fromJsonNotFound();
+        return InventoryItemModel.fromJsonNotFound(id);
       }
       print(body);
       print(response.body);

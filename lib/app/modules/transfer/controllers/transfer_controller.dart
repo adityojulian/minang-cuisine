@@ -44,6 +44,6 @@ class TransferController extends GetxController {
 
   void donate() async {
     await DisburseProvider()
-        .disburse(donationAmount.text, "John", "Doe", "112333456", "7711233");
+        .disburse(amount.toString(), "John", "Doe", "112333456", "7711233");
   }
 }

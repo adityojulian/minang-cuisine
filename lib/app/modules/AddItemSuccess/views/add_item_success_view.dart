@@ -55,7 +55,7 @@ class AddItemSuccessView extends GetView<AddItemSuccessController> {
                       SizedBox(
                         height: 50,
                         child: ElevatedButton(
-                          onPressed: () => {Get.offAllNamed(Routes.DASHBOARD)},
+                          onPressed: () => {Get.offNamed(Routes.DASHBOARD)},
                           child: Text(
                             "Back to Home Page",
                             style: TextStyle(

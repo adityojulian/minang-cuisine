@@ -15,8 +15,8 @@ class DisburseProvider extends GetConnect {
     String sort_code,
   ) async {
     final userId = json.encode({"id": auth.currentUser!.uid});
-    final profileInfo =
-        await post("http://10.0.2.2:3000/recycler/get-info", userId);
+    final profileInfo = await post(
+        "https://cd06-86-26-161-148.eu.ngrok.io/recycler/get-info", userId);
     print(profileInfo.body);
     ProfileModel data = ProfileModel.fromJson(profileInfo.body);
 

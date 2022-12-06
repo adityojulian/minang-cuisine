@@ -7,6 +7,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:pickles_rapyd/app/data/add_item_provider.dart';
 
 class AddItemController extends GetxController {
+  String itemId = Get.arguments;
   List<S2Choice<String>> matrialChoice = [
     S2Choice<String>(value: 'Plastic', title: 'Plastic'),
     S2Choice<String>(value: 'Metal', title: 'Metal'),
@@ -61,7 +62,7 @@ class AddItemController extends GetxController {
     print(sendedMaterial);
     await AddItemProvider().addNewItem(
         productNameController.text,
-        "1123123",
+        itemId,
         sendedMaterial,
         selectedType,
         double.parse(productWeightController.text),
@@ -71,6 +72,7 @@ class AddItemController extends GetxController {
   @override
   void onInit() {
     selectedMaterial = [];
+    print("itemid nya bang" + itemId);
     super.onInit();
   }
 

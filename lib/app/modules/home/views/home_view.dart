@@ -196,7 +196,7 @@ class HomeView extends GetView<HomeController> {
     );
   }
 
-  void notFoundBottomSheet() {
+  void notFoundBottomSheet(String id) {
     Get.bottomSheet(
       Container(
         height: 360,
@@ -289,7 +289,8 @@ class HomeView extends GetView<HomeController> {
                               SizedBox(
                                 height: 32,
                                 child: ElevatedButton(
-                                  onPressed: () => Get.toNamed(Routes.ADD_ITEM),
+                                  onPressed: () => Get.toNamed(Routes.ADD_ITEM,
+                                      arguments: id),
                                   child: Text(
                                     "Add Item",
                                     style: TextStyle(
@@ -389,9 +390,13 @@ class HomeView extends GetView<HomeController> {
                                     if (barcode.rawValue == null) {
                                       debugPrint('Failed to scan Barcode');
                                     } else {
-                                      await controller
-                                          .getItemDesc(barcode.rawValue!);
-                                      openBottomSheet();
+                                      if (await controller
+                                          .getItemDesc(barcode.rawValue!)) {
+                                        openBottomSheet();
+                                      } else {
+                                        notFoundBottomSheet(barcode.rawValue!);
+                                      }
+
                                       final String code = barcode.rawValue!;
                                       debugPrint('Barcode found! $code');
                                     }
@@ -401,7 +406,7 @@ class HomeView extends GetView<HomeController> {
                         ),
                         Center(
                           child: ElevatedButton(
-                              onPressed: () => notFoundBottomSheet(),
+                              onPressed: () => {},
                               child: Text("Test Not Found")),
                         )
                       ],

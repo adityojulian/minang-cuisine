@@ -35,8 +35,9 @@ class InventoryItemModel {
     type = json['type'];
   }
 
-  InventoryItemModel.fromJsonNotFound() {
+  InventoryItemModel.fromJsonNotFound(String id) {
     name = "Not Found";
+    id = id;
   }
 
   Map<String, dynamic> toJson() {

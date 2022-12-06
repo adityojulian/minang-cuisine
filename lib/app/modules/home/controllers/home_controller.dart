@@ -22,12 +22,17 @@ class HomeController extends GetxController
 
   void changeIndex(int index) {}
 
-  Future<void> getItemDesc(String id) async {
+  Future<bool> getItemDesc(String id) async {
     itemDesc = await HomeProvider().getItemDesc(id);
+    print(itemDesc.name);
+    if (itemDesc.name == "Not Found") {
+      return false;
+    }
     itemName = itemDesc.name.toString();
     material = itemDesc.material.toString();
     // print(itemDesc.name.toString());
     update();
+    return true;
   }
 
   @override

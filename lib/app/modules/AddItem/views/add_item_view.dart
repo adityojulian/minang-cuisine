@@ -355,7 +355,7 @@ class AddItemView extends GetView<AddItemController> {
                     height: 50,
                     child: ElevatedButton(
                       onPressed: () {
-                        // controller.addNewItem();
+                        controller.addNewItem();
                         Get.toNamed(Routes.ADD_ITEM_SUCCESS);
                       },
                       // onPressed: () => Get.toNamed(Routes.ADD_ITEM_SUCCESS),
