@@ -18,9 +18,18 @@ const resolvepromises = async (ids) => {
         const query_id = id;
         const item_query = query(grocery_items, where("id", "==", query_id));
         const item_desc = await getDocs(item_query);
-        results.push(item_desc.docs[0].data());
+        const data = item_desc.docs[0];
+        if (data) {
+            results.push(item_desc.docs[0].data());
+        }
     }
     return results;
+};
+
+const resolvepromisesAddItem = async (items) => {
+    for (const item of items) {
+        await addDoc(grocery_items, item);
+    }
 };
 
 const getItemDesc = asyncHandler(async (req, res) => {
@@ -51,7 +60,12 @@ const addItems = asyncHandler(async (req, res) => {
     res.json(result);
 });
 
+const addItemsFunc = async (items) => {
+    resolvepromisesAddItem(items);
+};
+
 module.exports = {
     getItemDesc,
     addItems,
+    addItemsFunc,
 };

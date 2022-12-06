@@ -7,6 +7,7 @@ const {
     grocery_items,
     trash_bank_inventory,
 } = require("../../database/firebase");
+const { addItemsFunc } = require("./groceryItemsController");
 const {
     create_wallet,
     transactionFunc,
@@ -183,6 +184,17 @@ const updatePoint = async (id, points) => {
     });
 };
 
+const addItemAction = asyncHandler(async (req, res) => {
+    try {
+        const { user_id, items } = req.body;
+        await addItemsFunc(items);
+        await updatePoint(user_id, 1);
+        res.json("success");
+    } catch (err) {
+        res.json(err);
+    }
+});
+
 module.exports = {
     create,
     newItems,
@@ -191,4 +203,5 @@ module.exports = {
     transaction,
     confirmTransaction,
     updatePoint,
+    addItemAction,
 };

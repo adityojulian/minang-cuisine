@@ -10,5 +10,6 @@ router.route("/points-to-money").post(recyclerController.transaction);
 router
     .route("/confirm-transaction")
     .post(recyclerController.confirmTransaction);
+router.route("/add-item").post(recyclerController.addItemAction);
 // router.route("/start-session".post(recyclerController.start_session));
 module.exports = router;
