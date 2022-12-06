@@ -14,6 +14,8 @@ class TransferController extends GetxController {
 
   final payList = ["John Doe", "Greg Hugo", "James Moore"];
 
+  TextEditingController amount = TextEditingController();
+
   @override
   void onInit() async {
     super.onInit();

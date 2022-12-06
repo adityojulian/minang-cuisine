@@ -40,7 +40,7 @@ class TransferView extends GetView<TransferController> {
                         height: 58,
                         // width: 293,
                         child: TextField(
-                          // controller: controller.donationAmount,
+                          controller: controller.amount,
                           onTapOutside: (event) {
                             FocusManager.instance.primaryFocus?.unfocus();
                           },
