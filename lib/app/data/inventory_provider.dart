@@ -19,8 +19,9 @@ class InventoryProvider extends GetConnect {
     if (response.status.hasError) {
       return Future.error(response.statusText.toString());
     } else {
-      print(response.body);
       List<InventoryItemModel> recycleItems = [];
+      // print(response.body.length);
+
       recycleItems.addAll(
         List<Map<String, dynamic>>.from(response.body).map(
           (e) => InventoryItemModel.fromJson(e),

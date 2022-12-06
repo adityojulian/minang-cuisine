@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 
 import '../modules/AddItem/bindings/add_item_binding.dart';
 import '../modules/AddItem/views/add_item_view.dart';
+import '../modules/AddItemSuccess/bindings/add_item_success_binding.dart';
+import '../modules/AddItemSuccess/views/add_item_success_view.dart';
 import '../modules/DonationDetail/bindings/donation_detail_binding.dart';
 import '../modules/DonationDetail/views/donation_detail_view.dart';
 import '../modules/DonationSuccess/bindings/donation_success_binding.dart';
@@ -106,6 +108,11 @@ class AppPages {
       name: _Paths.DONATION_SUCCESS,
       page: () => const DonationSuccessView(),
       binding: DonationSuccessBinding(),
+    ),
+    GetPage(
+      name: _Paths.ADD_ITEM_SUCCESS,
+      page: () => const AddItemSuccessView(),
+      binding: AddItemSuccessBinding(),
     ),
   ];
 }

@@ -18,6 +18,7 @@ abstract class Routes {
   static const ADD_ITEM = _Paths.ADD_ITEM;
   static const DONATION_DETAIL = _Paths.DONATION_DETAIL;
   static const DONATION_SUCCESS = _Paths.DONATION_SUCCESS;
+  static const ADD_ITEM_SUCCESS = _Paths.ADD_ITEM_SUCCESS;
 }
 
 abstract class _Paths {
@@ -37,4 +38,5 @@ abstract class _Paths {
   static const ADD_ITEM = '/add-item';
   static const DONATION_DETAIL = '/donation-detail';
   static const DONATION_SUCCESS = '/donation-success';
+  static const ADD_ITEM_SUCCESS = '/add-item-success';
 }

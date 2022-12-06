@@ -35,6 +35,10 @@ class InventoryItemModel {
     type = json['type'];
   }
 
+  InventoryItemModel.fromJsonNotFound() {
+    name = "Not Found";
+  }
+
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['recycle'] = this.recycle;

@@ -13,6 +13,10 @@ class HomeProvider extends GetConnect {
     if (response.status.hasError) {
       return Future.error(response.statusText.toString());
     } else {
+      if (response.body.length == 0) {
+        print("Item Not Found");
+        return InventoryItemModel.fromJsonNotFound();
+      }
       print(body);
       print(response.body);
       return InventoryItemModel.fromJsonItemDesc(response.body[0]);

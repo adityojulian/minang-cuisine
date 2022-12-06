@@ -2,6 +2,7 @@ import 'package:awesome_select/awesome_select.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:pickles_rapyd/app/routes/app_pages.dart';
 
 import '../controllers/add_item_controller.dart';
 
@@ -276,6 +277,72 @@ class AddItemView extends GetView<AddItemController> {
                 },
               ),
             ),
+            Divider(
+              thickness: 1,
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 27),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Approximate Weight",
+                    style: TextStyle(fontWeight: FontWeight.w400, fontSize: 16),
+                  ),
+                  SizedBox(
+                    height: 26,
+                    width: 178,
+                    child: TextField(
+                      onTapOutside: (event) {
+                        FocusManager.instance.primaryFocus?.unfocus();
+                      },
+                      controller: controller.productWeightController,
+                      // onChanged: (value) => controller.convertGBPtoPoint(value),
+                      // keyboardType: TextInputType.number,
+                      cursorColor: Color.fromRGBO(112, 185, 129, 1),
+                      style:
+                          TextStyle(fontSize: 15, fontWeight: FontWeight.w400),
+                      decoration: InputDecoration(
+                        floatingLabelBehavior: FloatingLabelBehavior.never,
+                        filled: true,
+                        fillColor: Color.fromRGBO(217, 217, 217, 0.6),
+                        label: Text.new(
+                          "Enter Aproximate Weight",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w400,
+                              fontSize: 14,
+                              color: Colors.black26),
+                        ),
+                        contentPadding:
+                            EdgeInsets.symmetric(horizontal: 11, vertical: 2),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide:
+                              const BorderSide(color: Colors.grey, width: 1),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20),
+                          borderSide: const BorderSide(
+                              color: Colors.transparent, width: 1),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20),
+                          borderSide: const BorderSide(
+                              color: Color.fromRGBO(112, 185, 129, 1),
+                              width: 2),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
             SizedBox(
               height: 20,
             ),
@@ -287,7 +354,11 @@ class AddItemView extends GetView<AddItemController> {
                   SizedBox(
                     height: 50,
                     child: ElevatedButton(
-                      onPressed: () => {},
+                      onPressed: () {
+                        // controller.addNewItem();
+                        Get.toNamed(Routes.ADD_ITEM_SUCCESS);
+                      },
+                      // onPressed: () => Get.toNamed(Routes.ADD_ITEM_SUCCESS),
                       child: Text(
                         "Confirm",
                         style: TextStyle(

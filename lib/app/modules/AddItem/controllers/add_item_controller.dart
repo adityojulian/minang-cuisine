@@ -4,6 +4,7 @@ import 'package:awesome_select/awesome_select.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:pickles_rapyd/app/data/add_item_provider.dart';
 
 class AddItemController extends GetxController {
   List<S2Choice<String>> matrialChoice = [
@@ -52,6 +53,21 @@ class AddItemController extends GetxController {
         value: 'XL', title: 'XL', subtitle: "Larger than a cerealbox"),
   ];
 
+  // Add Item Function
+  void addNewItem() async {
+    selectedMaterial.forEach((element) {
+      sendedMaterial = sendedMaterial + element.toString();
+    });
+    print(sendedMaterial);
+    await AddItemProvider().addNewItem(
+        productNameController.text,
+        "1123123",
+        sendedMaterial,
+        selectedType,
+        double.parse(productWeightController.text),
+        true);
+  }
+
   @override
   void onInit() {
     selectedMaterial = [];
@@ -59,10 +75,12 @@ class AddItemController extends GetxController {
   }
 
   TextEditingController productNameController = TextEditingController();
+  TextEditingController productWeightController = TextEditingController();
 
   List<String> selectedMaterial = [];
   String selectedType = "";
   String selectedSize = "";
+  String sendedMaterial = "";
 
   void selectMaterialChoice(S2MultiSelected<String> input) {
     selectedMaterial = input.value;
