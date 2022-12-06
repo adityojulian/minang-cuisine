@@ -5,24 +5,9 @@ import '../models/DonationModel.dart';
 import '../models/ProfileModel.dart';
 import 'dart:convert';
 
-class DonationProvider extends GetConnect {
+class DisburseProvider extends GetConnect {
   FirebaseAuth auth = FirebaseAuth.instance;
-  Future<List<DonationModel>> getDonationList() async {
-    print("masuk ke donation provider");
-    List<DonationModel> donationList = [];
-    var res = await get("http://10.0.2.2:3000/donation/get-donation");
-    if (res.status.hasError) {
-      return Future.error(res.statusText!);
-    }
-    donationList.addAll(
-      List<Map<String, dynamic>>.from(res.body).map(
-        (e) => DonationModel.fromJson(e),
-      ),
-    );
-    return donationList;
-  }
-
-  Future<void> donate(
+  Future<void> disburse(
     String amount,
     String first_name,
     String last_name,
