@@ -1,111 +1,68 @@
-## Create User:
+# Pickles API
 
-### Firestore Collection:
+### _A brief summary over the Pickles' technologies_
 
-users
+## Tech Stacks
 
-### Desc:
+- [Flutter](https://flutter.dev/) - Open source framework by Google for building beautiful, natively compiled, multi-platform applications
+- [GetX](https://pub.dev/packages/get) - High-performance state management, intelligent dependency injection, and route management for Flutter
+- [node.js](http://nodejs.org/) - Server environement
+- [Express](http://expressjs.com/) - Fast node.js network app framework
+- [Firebase](https://firebase.google.com/) - NoSQL and real-time hosting of databases, this project utilize the [Firebase Authentication](https://firebase.google.com/docs/auth) and [Firestore Database](https://firebase.google.com/docs/firestore)
 
-        Buat user profile untuk naroh points dan ewallet id
-        For users to
-    > API Post request endpoint:
-        http://localhost:3000/recycler/create-user
-    > Example post body:
-        {
-            "first_name":"Sadikin",
-            "last_name":"Sukinah",
-            "unique_id": uid, -> INI NNTI JADI UID FIREBASE
-            "contact":{
-                "contact_type":"personal", -> INI GAUSAH DIUBAH
-                "first_name":"Sadikin",
-                "last_name":"Sukinah",
-                "email":"sadikin@gmail.com",
-                "country":"GB",
-                "nationality":"GB",
-                "date_of_birth":"12/01/1998"
-        }
-    > Flow:
-        1. User sign up trus dapet uid hasil dari auto generated firebase
-        2. User signs up through the app and will get an UID automatically-generated from Firebase
-        3. At the same time, the app calls a POST request to create a user detail on Firebase
-    > Output:
-        {"F4QzMxZtO3Wve4QcHLsa"}
+## External APIs
 
-Scan item trus masuk ke inventory: > Firestore Collection:
-grocery_items
-bought_items > Desc: 1. User scans barcode and get the item description 2. Add item to inventory > API Post request: - Get item description: - tambah ke inventory: http://localhost:3000/recycler/new-items > Example post body: - Get items from :
-{
-"ids":[
-"12376",
-"45695"
-]
-}
+- [BarcodeSpider.com](https://www.barcodespider.com/) - UPC code lookup database
 
-        - tambah ke inventory:
-        {
-            "items": [
-                {
-                    "id": "7979",
-                    "user_id":"F4QzMxZtO3Wve4QcHLsa"
-                }
-            ]
-        }
-    > Flow:
-        1. dari api barcode scanner nge-scan barcode dapet hasil id itemnya
-        2. jalanin post request untuk ngambil item desc pake id dari barcode scanner, tampilin di frontend
-        3. tunggu prompt dari user untuk jadi recycle ato nggak
-        4. kalo iya jalanin post request pake body kaya di example
-    > Output:
-        - ambil item description:
+## Notable Dependencies
 
-        - tambah ke inventory: Output nya ga guna lgsung aja kasi page success
+- [Google's ML Kit for Flutter](https://pub.dev/packages/google_ml_kit) - Flutter dependency used to extract product code from receipt
+- [mobile_scanner](https://pub.dev/packages/mobile_scanner) - Flutter dependency used to detect barcode
 
-Kegiatan recycling: > Firestore collection: - bought_items - recycled_items - recycle_session - trash_bank_inventory > Desc:
-Dari user inventory -> pilih item yang mau direcycle -> recycle -> summary -> confirm -> pilih location -> finish session > URL: - ambil item yang ada di inventory: http://localhost:3000/recycler/get-info - finish session: http://localhost:3000/session/create-session > Example Body:
-\*ambil inventory:
-{
-"id":"F4QzMxZtO3Wve4QcHLsa" -> user id
-}
+## Environmnet Version
 
-        *finish session:
-        {
-            "user_id": "F4QzMxZtO3Wve4QcHLsa",
-            "items": [
-                {
-                    "id": "7979",
-                    "bought_id": "9aUq0pXuCdii5N0UQ6yT"
-                }
-            ],
-            "location":"Selly Hill Road"
-        }
-    > Flow:
-        1. masuk page inventory post request pake user id, tampilin di frontend
-        2. user pilih item trus pencet recycle
-        3. frontend ngitung total weight, sama points
-        4. user confirm
-        5. masuk sistem gps itu lanjutin aja sampe akhir, dari server blom ada apa apa
-        6. user buang sampah trus confirm, post request ke finish session pake body kayak diatas
-    > Output:
-        - ambil inventory:
-            [
-                {
-                    "weight": 0.8,
-                    "recycle": true,
-                    "material": "plastic",
-                    "name": "Nivea Men Shampoo",
-                    "id": "12376",
-                    "type": "tube"
-                },
-                {
-                    "material": "cardboard",
-                    "name": "Aspro Soya Milk",
-                    "weight": "0.9",
-                    "type": "Container",
-                    "id": "23385",
-                    "recycle": "true"
-                },
+### Flutter
 
-            ]
+```sh
+flutter --version
+```
 
-        - finish session:
-            gaguna
+> Flutter 3.6.0-1.0.pre.30 • channel master • https://github.com/flutter/flutter.git
+> Framework • revision 6e89042d9b (4 weeks ago) • 2022-11-10 21:58:00 -0500
+> Engine • revision 0721c860e2
+> Tools • Dart 2.19.0 (build 2.19.0-383.0.dev) • DevTools 2.19.0
+
+### Dart
+
+```sh
+dart --version
+```
+
+> Dart SDK version: 2.19.0-383.0.dev (dev) (Wed Nov 9 09:36:39 2022 -0800) on "windows_x64"
+
+### Nodejs
+
+```sh
+node --version
+```
+
+### Android Emulator
+
+> Google Pixel 4 API 30
+
+## Installation
+
+Install the dependencies for frontend and server environment , start the server, then build the app.
+
+```sh
+git clone https://github.com/muhammadegaa/minang-cuisine.git
+flutter pub get
+cd server
+npm install
+cd ..
+flutter run ##Execute when Android Emulator is running
+```
+
+## Rest APIs
+
+Please see our [Postman API Documentation](https://www.postman.com/grey-firefly-314014/workspace/minang-cuisine/api/0054eb98-c6c1-4520-a1db-15a7b0cc2943) to see full implementation, including the request and response body.
