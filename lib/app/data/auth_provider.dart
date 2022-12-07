@@ -5,7 +5,7 @@ import 'package:pickles_rapyd/app/models/UserModel.dart';
 
 class AuthProvider extends GetConnect {
   var local = "http://10.0.2.2:3000";
-  var emulator = "https://5b6e-86-26-161-148.eu.ngrok.io";
+  var emulator = "https://cd06-86-26-161-148.eu.ngrok.io";
 
   Future<Response> registerUser(UserModel userData) async {
     print("user data " + userData.toJson().toString());

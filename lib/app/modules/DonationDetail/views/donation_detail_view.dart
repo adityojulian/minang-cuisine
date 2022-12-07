@@ -177,8 +177,8 @@ class DonationDetailView extends GetView<DonationDetailController> {
                           height: 27,
                           // width: 152,
                           child: ElevatedButton(
-                            onPressed: () {
-                              controller.donate();
+                            onPressed: () async {
+                              await controller.donate();
                               Get.toNamed(Routes.DONATION_SUCCESS);
                             },
                             child: Text(

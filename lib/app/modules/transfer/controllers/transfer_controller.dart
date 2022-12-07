@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:pickles_rapyd/app/data/profile_provider.dart';
 import 'package:pickles_rapyd/app/models/ProfileModel.dart';
 import 'package:pickles_rapyd/app/data/disbures_provider.dart';
+import 'package:pickles_rapyd/app/data/donation_provider.dart';
 
 class TransferController extends GetxController {
   late ProfileModel profile = ProfileModel();
@@ -42,8 +43,8 @@ class TransferController extends GetxController {
     update();
   }
 
-  void donate() async {
-    await DisburseProvider()
-        .disburse(amount.toString(), "John", "Doe", "112333456", "7711233");
+  Future<void> donate() async {
+    await DonationProvider()
+        .donate(amount.text, "John", "Doe", "112333456", "7711233");
   }
 }

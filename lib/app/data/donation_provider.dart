@@ -7,7 +7,7 @@ import 'dart:convert';
 
 class DonationProvider extends GetConnect {
   var local = "http://10.0.2.2:3000";
-  var emulator = "https://5b6e-86-26-161-148.eu.ngrok.io";
+  var emulator = "https://cd06-86-26-161-148.eu.ngrok.io";
 
   FirebaseAuth auth = FirebaseAuth.instance;
   Future<List<DonationModel>> getDonationList() async {
@@ -50,5 +50,7 @@ class DonationProvider extends GetConnect {
     });
 
     print(body);
+    final response = await post(
+        "https://cd06-86-26-161-148.eu.ngrok.io/disburse/payout", body);
   }
 }
