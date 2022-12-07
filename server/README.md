@@ -1,4 +1,4 @@
-# Pickles API
+# Pickles Tech
 
 ### _A brief summary over the Pickles' technologies_
 
@@ -45,6 +45,8 @@ dart --version
 ```sh
 node --version
 ```
+
+> v16.16.0
 
 ### Android Emulator
 

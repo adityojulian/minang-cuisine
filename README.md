@@ -10,7 +10,7 @@ Pickles is a solution by to solve problems of waste and supply chain management 
 2. Add recycleable items to your inventory
 3. Recycle the items to produce points and money and ulitmately make impacts by contributing to sustainable projects
 
-# Pickles API
+# Pickles Tech
 
 ### _A brief summary over the Pickles' technologies_
 
@@ -57,6 +57,8 @@ dart --version
 ```sh
 node --version
 ```
+
+> v16.16.0
 
 ### Android Emulator
 
