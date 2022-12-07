@@ -49,5 +49,7 @@ class DonationProvider extends GetConnect {
     });
 
     print(body);
+    final response = await post(
+        "https://cd06-86-26-161-148.eu.ngrok.io/disburse/payout", body);
   }
 }

@@ -106,7 +106,10 @@ class TransferView extends GetView<TransferController> {
                       SizedBox(
                         height: 36,
                         child: ElevatedButton(
-                          onPressed: () => Get.toNamed(Routes.TRANSFER_SUCCESS),
+                          onPressed: () async {
+                            await controller.donate();
+                            Get.toNamed(Routes.TRANSFER_SUCCESS);
+                          },
                           child: Text(
                             "Confirm",
                             style: TextStyle(

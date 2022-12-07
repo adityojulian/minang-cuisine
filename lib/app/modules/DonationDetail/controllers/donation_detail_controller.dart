@@ -8,12 +8,13 @@ class DonationDetailController extends GetxController {
   final DonationModel donation = Get.arguments;
   TextEditingController donationAmount = TextEditingController();
 
-  void donate() async {
-    await DisburseProvider().disburse(
+  Future<void> donate() async {
+    await DonationProvider().donate(
         donationAmount.text,
         donation.firstName.toString(),
         donation.lastName.toString(),
         donation.accountNumber.toString(),
         donation.sortCode.toString());
+    update();
   }
 }
