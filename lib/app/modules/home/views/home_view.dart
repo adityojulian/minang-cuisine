@@ -404,11 +404,11 @@ class HomeView extends GetView<HomeController> {
                             },
                           ),
                         ),
-                        Center(
-                          child: ElevatedButton(
-                              onPressed: () => {},
-                              child: Text("Test Not Found")),
-                        )
+                        // Center(
+                        //   child: ElevatedButton(
+                        //       onPressed: () => {},
+                        //       child: Text("Test Not Found")),
+                        // )
                       ],
                     ),
                   ],

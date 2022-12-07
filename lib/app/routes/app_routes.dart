@@ -23,6 +23,8 @@ abstract class Routes {
   static const SETUP_PAYMENT = _Paths.SETUP_PAYMENT;
   static const TRANSFER_SUCCESS = _Paths.TRANSFER_SUCCESS;
   static const ADD_ITEM_SUCCESS = _Paths.ADD_ITEM_SUCCESS;
+  static const RECEIPT_SCAN = _Paths.RECEIPT_SCAN;
+  static const ADD_TO_INVENTORY_SUCCESS = _Paths.ADD_TO_INVENTORY_SUCCESS;
 }
 
 abstract class _Paths {
@@ -47,4 +49,6 @@ abstract class _Paths {
   static const SETUP_PAYMENT = '/setup-payment';
   static const TRANSFER_SUCCESS = '/transfer-success';
   static const ADD_ITEM_SUCCESS = '/add-item-success';
+  static const RECEIPT_SCAN = '/receipt-scan';
+  static const ADD_TO_INVENTORY_SUCCESS = '/add-to-inventory-success';
 }

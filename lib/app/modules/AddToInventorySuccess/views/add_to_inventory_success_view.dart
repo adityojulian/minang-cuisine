@@ -1,0 +1,72 @@
+import 'package:flutter/material.dart';
+
+import 'package:get/get.dart';
+import 'package:pickles_rapyd/app/routes/app_pages.dart';
+
+import '../controllers/add_to_inventory_success_controller.dart';
+
+class AddToInventorySuccessView
+    extends GetView<AddToInventorySuccessController> {
+  const AddToInventorySuccessView({Key? key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Color.fromRGBO(76, 168, 98, 0.8),
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(10),
+          child: Container(
+            height: 287,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 15),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Center(
+                    child: Text(
+                      "The items has been added to your inventory",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                  Image.asset("assets/check_success.png"),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      SizedBox(
+                        height: 50,
+                        child: ElevatedButton(
+                          onPressed: () => {Get.offNamed(Routes.DASHBOARD)},
+                          child: Text(
+                            "Back to Home Page",
+                            style: TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.w600),
+                          ),
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Color.fromRGBO(76, 168, 98, 0.8),
+                            fixedSize: const Size(152, 32),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(100),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}

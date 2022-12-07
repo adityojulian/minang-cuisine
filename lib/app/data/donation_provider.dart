@@ -6,12 +6,14 @@ import '../models/ProfileModel.dart';
 import 'dart:convert';
 
 class DonationProvider extends GetConnect {
+  var local = "http://10.0.2.2:3000";
+  var emulator = "https://5b6e-86-26-161-148.eu.ngrok.io";
+
   FirebaseAuth auth = FirebaseAuth.instance;
   Future<List<DonationModel>> getDonationList() async {
     print("masuk ke donation provider");
     List<DonationModel> donationList = [];
-    var res = await get(
-        "https://cd06-86-26-161-148.eu.ngrok.io/donation/get-donation");
+    var res = await get("$emulator/donation/get-donation");
     if (res.status.hasError) {
       return Future.error(res.statusText!);
     }
@@ -31,8 +33,7 @@ class DonationProvider extends GetConnect {
     String sort_code,
   ) async {
     final userId = json.encode({"id": auth.currentUser!.uid});
-    final profileInfo = await post(
-        "https://cd06-86-26-161-148.eu.ngrok.io/recycler/get-info", userId);
+    final profileInfo = await post("$emulator/recycler/get-info", userId);
     print(profileInfo.body);
     ProfileModel data = ProfileModel.fromJson(profileInfo.body);
 

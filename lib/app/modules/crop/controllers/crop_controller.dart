@@ -11,6 +11,10 @@ class CropController extends GetxController {
   XFile? pickedFile;
   CroppedFile? croppedFile;
 
+  String scannedText = "";
+  bool textScanning = false;
+  List<String> barcodeList = [];
+
   // Crop function
   Future<void> cropImage(String imageSource) async {
     final cropImageFile = await ImageCropper().cropImage(
@@ -33,9 +37,32 @@ class CropController extends GetxController {
     );
     if (cropImageFile != null) {
       croppedFile = cropImageFile;
-      update();
+      await scanImage(croppedFile!.path);
+      // update();
       // await scanImage(cropImageFile.path);
-      Get.toNamed(Routes.CROP_IMAGE_PREVIEW, arguments: croppedFile!.path);
+      // Get.toNamed(Routes.CROP_IMAGE_PREVIEW, arguments: croppedFile!.path);
+      Get.toNamed(Routes.RECEIPT_SCAN, arguments: barcodeList);
     }
+  }
+
+  Future<void> scanImage(String imageSource) async {
+    print("masuk scan bang");
+    textScanning = true;
+
+    final inputImage = InputImage.fromFilePath(imageSource);
+    final textDetector = GoogleMlKit.vision.textRecognizer();
+    RecognizedText recognizedText = await textDetector.processImage(inputImage);
+    await textDetector.close();
+
+    for (TextBlock block in recognizedText.blocks) {
+      for (TextLine line in block.lines) {
+        barcodeList.add(line.elements.first.text);
+        scannedText = scannedText + line.elements.first.text + "\n";
+      }
+    }
+    print("scannedText: " + scannedText);
+    print("barcode list " + barcodeList.toString());
+    textScanning = false;
+    update();
   }
 }

@@ -5,6 +5,9 @@ import 'package:get/get.dart';
 import 'package:pickles_rapyd/app/models/InventoryItemModel.dart';
 
 class InventoryProvider extends GetConnect {
+  var local = "http://10.0.2.2:3000";
+  var emulator = "https://5b6e-86-26-161-148.eu.ngrok.io";
+
   FirebaseAuth auth = FirebaseAuth.instance;
 
   Future<List<InventoryItemModel>> getUserInventory() async {
@@ -13,8 +16,7 @@ class InventoryProvider extends GetConnect {
 
     print(body);
 
-    final response = await post(
-        "https://cd06-86-26-161-148.eu.ngrok.io/recycler/get-items", userId);
+    final response = await post("$emulator/recycler/get-items", userId);
 
     if (response.status.hasError) {
       return Future.error(response.statusText.toString());
