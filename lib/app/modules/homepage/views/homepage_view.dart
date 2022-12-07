@@ -478,7 +478,7 @@ class HomepageView extends GetView<HomepageController> {
                           ),
                         ),
                         Text(
-                          "900K",
+                          "1000 points",
                           style: TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.w700,
@@ -506,7 +506,7 @@ class HomepageView extends GetView<HomepageController> {
                           ),
                         ),
                         Text(
-                          "30M",
+                          "7.3kg",
                           style: TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.w700,
