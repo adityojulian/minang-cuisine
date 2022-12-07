@@ -14,7 +14,7 @@ import '../controllers/home_controller.dart';
 class HomeView extends GetView<HomeController> {
   final authCon = Get.find<AuthController>();
 
-  void openBottomSheet() {
+  void openBottomSheet(String barcode) {
     Get.bottomSheet(
       GetBuilder<HomeController>(builder: (c) {
         return Container(
@@ -32,7 +32,7 @@ class HomeView extends GetView<HomeController> {
                           image: new DecorationImage(
                               fit: BoxFit.fill,
                               image: new NetworkImage(
-                                  "https://i.imgur.com/BoN9kdC.png"))),
+                                  "https://i.imgur.com/hDS6kU3.jpeg"))),
                     ),
                     SizedBox(width: 19),
                     Column(
@@ -78,14 +78,6 @@ class HomeView extends GetView<HomeController> {
                               ),
                             ]),
                         SizedBox(height: 10),
-                        Container(
-                            child: Align(
-                                alignment: Alignment.topLeft,
-                                child: Text(
-                                  "Nutella, Ferrero",
-                                  textAlign: TextAlign.start,
-                                  style: TextStyle(fontSize: 12),
-                                )))
                       ],
                     ),
                   ]),
@@ -172,7 +164,8 @@ class HomeView extends GetView<HomeController> {
                             fixedSize: const Size(152, 32),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(8))),
-                        onPressed: () {
+                        onPressed: () async {
+                          await c.addItemToInventory(barcode);
                           Get.back();
                         },
                         child: const Text(
@@ -392,7 +385,7 @@ class HomeView extends GetView<HomeController> {
                                     } else {
                                       if (await controller
                                           .getItemDesc(barcode.rawValue!)) {
-                                        openBottomSheet();
+                                        openBottomSheet(barcode.rawValue!);
                                       } else {
                                         notFoundBottomSheet(barcode.rawValue!);
                                       }
@@ -404,11 +397,11 @@ class HomeView extends GetView<HomeController> {
                             },
                           ),
                         ),
-                        Center(
-                          child: ElevatedButton(
-                              onPressed: () => {},
-                              child: Text("Test Not Found")),
-                        )
+                        // Center(
+                        //   child: ElevatedButton(
+                        //       onPressed: () => {},
+                        //       child: Text("Test Not Found")),
+                        // )
                       ],
                     ),
                   ],

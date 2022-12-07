@@ -149,21 +149,26 @@ class _CameraScreenState extends State<CameraScreen>
             init: CropController(),
             // initState: (_) {},
             builder: (cropController) {
-              return InkWell(
-                onTap: () async {
-                  XFile? rawImage = await captureImage();
-                  cropController.cropImage(rawImage!.path);
-                  // await takePicture();
-                  // captureImage();
-                  // File imageFile = File(rawImage!.path);
-                  // Get.toNamed(Routes.CROP, arguments: rawImage!.path);
-                },
-                child: Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    Icon(Icons.circle, color: Colors.white38, size: 80),
-                    Icon(Icons.circle, color: Colors.white, size: 65),
-                  ],
+              return Positioned.fill(
+                child: Align(
+                  alignment: Alignment.bottomCenter,
+                  child: InkWell(
+                    onTap: () async {
+                      XFile? rawImage = await captureImage();
+                      cropController.cropImage(rawImage!.path);
+                      // await takePicture();
+                      // captureImage();
+                      // File imageFile = File(rawImage!.path);
+                      // Get.toNamed(Routes.CROP, arguments: rawImage!.path);
+                    },
+                    child: Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        Icon(Icons.circle, color: Colors.white38, size: 80),
+                        Icon(Icons.circle, color: Colors.white, size: 65),
+                      ],
+                    ),
+                  ),
                 ),
               );
             },

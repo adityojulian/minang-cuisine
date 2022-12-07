@@ -211,7 +211,7 @@ class ConfirmationView extends GetView<ConfirmationController> {
                             image: new DecorationImage(
                               fit: BoxFit.fill,
                               image: new NetworkImage(
-                                  "https://i.imgur.com/BoN9kdC.png"),
+                                  "https://i.imgur.com/hDS6kU3.jpeg"),
                             ),
                           ),
                         ),

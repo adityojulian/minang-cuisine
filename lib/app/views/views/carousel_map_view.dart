@@ -170,8 +170,8 @@ class CarouselMapView extends GetView {
                       shape: BoxShape.circle,
                       image: new DecorationImage(
                         fit: BoxFit.fill,
-                        image:
-                            new NetworkImage("https://i.imgur.com/BoN9kdC.png"),
+                        image: new NetworkImage(
+                            "https://i.imgur.com/hDS6kU3.jpeg"),
                       ),
                     ),
                   ),
@@ -197,7 +197,7 @@ class CarouselMapView extends GetView {
                           ),
                           SizedBox(width: 20),
                           SizedBox(
-                            width: 150,
+                            width: 100,
                             height: 30,
                             child: AutoSizeText(
                               mapItem.materials!.join(", "),
@@ -218,7 +218,7 @@ class CarouselMapView extends GetView {
               ),
               SizedBox(
                 height: 33,
-                width: 107,
+                width: 90,
                 child: ElevatedButton(
                   onPressed: () => openBottomSheet(),
                   child: Text(

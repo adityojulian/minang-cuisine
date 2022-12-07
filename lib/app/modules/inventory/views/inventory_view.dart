@@ -156,9 +156,13 @@ class InventoryView extends GetView<InventoryController> {
                           return Visibility(
                             visible: !controller.searchStatus,
                             child: CheckboxListTile(
-                                title: Text(
-                                  "Select all",
-                                  style: TextStyle(fontWeight: FontWeight.w600),
+                                title: Transform.translate(
+                                  offset: Offset(-16, 0),
+                                  child: Text(
+                                    "Select all",
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.w600),
+                                  ),
                                 ),
                                 controlAffinity:
                                     ListTileControlAffinity.leading,
@@ -199,12 +203,16 @@ class InventoryView extends GetView<InventoryController> {
                                       .checkboxAdd(controller.foundItems[index])
                                   : controller.checkboxRemove(
                                       controller.foundItems[index])),
-                              title: Text(
-                                controller.foundItems[index].name
-                                    .toString()
-                                    .capitalize!,
-                                style: TextStyle(
-                                    fontSize: 14, fontWeight: FontWeight.w400),
+                              title: Transform.translate(
+                                offset: Offset(-16, 0),
+                                child: Text(
+                                  controller.foundItems[index].name
+                                      .toString()
+                                      .capitalize!,
+                                  style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w400),
+                                ),
                               ),
                               // trailing: Row(
                               //   children: [

@@ -2,14 +2,18 @@ import 'package:get/get.dart';
 
 import '../modules/AddItem/bindings/add_item_binding.dart';
 import '../modules/AddItem/views/add_item_view.dart';
-import '../modules/CropImagePreview/bindings/crop_image_preview_binding.dart';
-import '../modules/CropImagePreview/views/crop_image_preview_view.dart';
 import '../modules/AddItemSuccess/bindings/add_item_success_binding.dart';
 import '../modules/AddItemSuccess/views/add_item_success_view.dart';
+import '../modules/AddToInventorySuccess/bindings/add_to_inventory_success_binding.dart';
+import '../modules/AddToInventorySuccess/views/add_to_inventory_success_view.dart';
+import '../modules/CropImagePreview/bindings/crop_image_preview_binding.dart';
+import '../modules/CropImagePreview/views/crop_image_preview_view.dart';
 import '../modules/DonationDetail/bindings/donation_detail_binding.dart';
 import '../modules/DonationDetail/views/donation_detail_view.dart';
 import '../modules/DonationSuccess/bindings/donation_success_binding.dart';
 import '../modules/DonationSuccess/views/donation_success_view.dart';
+import '../modules/ReceiptScan/bindings/receipt_scan_binding.dart';
+import '../modules/ReceiptScan/views/receipt_scan_view.dart';
 import '../modules/RecycleSuccess/bindings/recycle_success_binding.dart';
 import '../modules/RecycleSuccess/views/recycle_success_view.dart';
 import '../modules/SetupPayment/bindings/setup_payment_binding.dart';
@@ -141,6 +145,16 @@ class AppPages {
       name: _Paths.ADD_ITEM_SUCCESS,
       page: () => const AddItemSuccessView(),
       binding: AddItemSuccessBinding(),
+    ),
+    GetPage(
+      name: _Paths.RECEIPT_SCAN,
+      page: () => const ReceiptScanView(),
+      binding: ReceiptScanBinding(),
+    ),
+    GetPage(
+      name: _Paths.ADD_TO_INVENTORY_SUCCESS,
+      page: () => const AddToInventorySuccessView(),
+      binding: AddToInventorySuccessBinding(),
     ),
   ];
 }

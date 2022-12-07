@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pickles_rapyd/app/data/home_provider.dart';
+import 'package:pickles_rapyd/app/data/receipt_item_provider.dart';
 import 'package:pickles_rapyd/app/models/InventoryItemModel.dart';
 
 class HomeController extends GetxController
@@ -11,10 +12,10 @@ class HomeController extends GetxController
   String material = "Not Found";
   final List<Tab> homeTabs = const <Tab>[
     Tab(
-      text: "Barcode",
+      text: "Receipt",
     ),
     Tab(
-      text: "Receipt",
+      text: "Barcode",
     )
   ];
 
@@ -33,6 +34,13 @@ class HomeController extends GetxController
     // print(itemDesc.name.toString());
     update();
     return true;
+  }
+
+  Future<void> addItemToInventory(String id) async {
+    List idToAdd = [];
+    idToAdd.add(id);
+    await ReceiptItemProvider().addItemToInventory(idToAdd);
+    update();
   }
 
   @override
