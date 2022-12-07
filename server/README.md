@@ -1,9 +1,14 @@
-Create User:
-    > Firestore Collection:
-        users
-    > Desc:
+## Create User:
+
+### Firestore Collection:
+
+users
+
+### Desc:
+
         Buat user profile untuk naroh points dan ewallet id
-    > url post request:
+        For users to
+    > API Post request endpoint:
         http://localhost:3000/recycler/create-user
     > Example post body:
         {
@@ -21,34 +26,26 @@ Create User:
         }
     > Flow:
         1. User sign up trus dapet uid hasil dari auto generated firebase
-        2. Langsung post request aja pake body kayak diatas
-        (usahain di step 2 gausah ganti state jadi sekalian aja dalam satu function)
+        2. User signs up through the app and will get an UID automatically-generated from Firebase
+        3. At the same time, the app calls a POST request to create a user detail on Firebase
     > Output:
         {"F4QzMxZtO3Wve4QcHLsa"}
 
-Scan item trus masuk ke inventory:
-    > Firestore Collection:
-        grocery_items
-        bought_items
-    > Desc:
-        User scan barcode, dapet item description, trus nambahin ke item inventory
-    > url Post request:
-        - ambil item description: 
-        - tambah ke inventory: http://localhost:3000/recycler/new-items
-    > Example post body:
-
-        - ambil item desc:
-        {
-            "items": [
-                "7979"
-            ]
-        }
+Scan item trus masuk ke inventory: > Firestore Collection:
+grocery_items
+bought_items > Desc: 1. User scans barcode and get the item description 2. Add item to inventory > API Post request: - Get item description: - tambah ke inventory: http://localhost:3000/recycler/new-items > Example post body: - Get items from :
+{
+"ids":[
+"12376",
+"45695"
+]
+}
 
         - tambah ke inventory:
         {
             "items": [
                 {
-                    "id": "7979", 
+                    "id": "7979",
                     "user_id":"F4QzMxZtO3Wve4QcHLsa"
                 }
             ]
@@ -63,24 +60,12 @@ Scan item trus masuk ke inventory:
 
         - tambah ke inventory: Output nya ga guna lgsung aja kasi page success
 
-
-Kegiatan recycling:
-    > Firestore collection:
-        - bought_items
-        - recycled_items
-        - recycle_session
-        - trash_bank_inventory
-    > Desc:
-        Dari user inventory -> pilih item yang mau direcycle -> recycle -> summary -> confirm -> pilih location -> finish session 
-    > URL:
-        - ambil item yang ada di inventory: http://localhost:3000/recycler/get-info
-        - finish session: http://localhost:3000/session/create-session
-    > Example Body:
-        *ambil inventory:
-        {
-            "id":"F4QzMxZtO3Wve4QcHLsa" -> user id
-        }
-
+Kegiatan recycling: > Firestore collection: - bought_items - recycled_items - recycle_session - trash_bank_inventory > Desc:
+Dari user inventory -> pilih item yang mau direcycle -> recycle -> summary -> confirm -> pilih location -> finish session > URL: - ambil item yang ada di inventory: http://localhost:3000/recycler/get-info - finish session: http://localhost:3000/session/create-session > Example Body:
+\*ambil inventory:
+{
+"id":"F4QzMxZtO3Wve4QcHLsa" -> user id
+}
 
         *finish session:
         {
@@ -121,6 +106,6 @@ Kegiatan recycling:
                 },
 
             ]
-        
+
         - finish session:
             gaguna
