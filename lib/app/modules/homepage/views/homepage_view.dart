@@ -157,7 +157,7 @@ class HomepageView extends GetView<HomepageController> {
                   ],
                 ),
                 SizedBox(
-                  height: 54,
+                  height: 20,
                 ),
                 SizedBox(
                   height: 32,
@@ -215,6 +215,7 @@ class HomepageView extends GetView<HomepageController> {
           color: Colors.black,
         ),
       ),
+      // resizeToAvoidBottomInset: false,
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -608,7 +609,7 @@ class HomepageView extends GetView<HomepageController> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Text(
-                            "60T",
+                            "3.5kg",
                             style: TextStyle(
                                 fontSize: 14, fontWeight: FontWeight.w700),
                           ),
@@ -616,7 +617,7 @@ class HomepageView extends GetView<HomepageController> {
                             width: 30,
                           ),
                           Text(
-                            "100T",
+                            "3.5kg",
                             style: TextStyle(
                                 fontSize: 14, fontWeight: FontWeight.w700),
                           )
@@ -652,7 +653,7 @@ class HomepageView extends GetView<HomepageController> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Text(
-                            "60T",
+                            "10g",
                             style: TextStyle(
                                 fontSize: 14, fontWeight: FontWeight.w700),
                           ),
@@ -660,7 +661,7 @@ class HomepageView extends GetView<HomepageController> {
                             width: 30,
                           ),
                           Text(
-                            "100T",
+                            "10kg",
                             style: TextStyle(
                                 fontSize: 14, fontWeight: FontWeight.w700),
                           )
@@ -696,7 +697,7 @@ class HomepageView extends GetView<HomepageController> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Text(
-                            "60T",
+                            "20g",
                             style: TextStyle(
                                 fontSize: 14, fontWeight: FontWeight.w700),
                           ),
@@ -704,7 +705,7 @@ class HomepageView extends GetView<HomepageController> {
                             width: 30,
                           ),
                           Text(
-                            "100T",
+                            "20g",
                             style: TextStyle(
                                 fontSize: 14, fontWeight: FontWeight.w700),
                           )
@@ -740,7 +741,7 @@ class HomepageView extends GetView<HomepageController> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Text(
-                            "60T",
+                            "3.5kg",
                             style: TextStyle(
                                 fontSize: 14, fontWeight: FontWeight.w700),
                           ),
@@ -748,7 +749,7 @@ class HomepageView extends GetView<HomepageController> {
                             width: 30,
                           ),
                           Text(
-                            "100T",
+                            "3.5kg",
                             style: TextStyle(
                                 fontSize: 14, fontWeight: FontWeight.w700),
                           )

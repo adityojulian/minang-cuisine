@@ -170,8 +170,8 @@ class CarouselMapView extends GetView {
                       shape: BoxShape.circle,
                       image: new DecorationImage(
                         fit: BoxFit.fill,
-                        image:
-                            new NetworkImage("https://i.imgur.com/BoN9kdC.png"),
+                        image: new NetworkImage(
+                            "https://i.imgur.com/hDS6kU3.jpeg"),
                       ),
                     ),
                   ),

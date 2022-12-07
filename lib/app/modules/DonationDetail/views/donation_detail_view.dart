@@ -162,13 +162,6 @@ class DonationDetailView extends GetView<DonationDetailController> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              "Balance: 0 £",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 10,
-                                  color: Colors.red),
-                            ),
-                            Text(
                               "Min. amount: 1 £",
                               style: TextStyle(
                                   fontWeight: FontWeight.w500,
