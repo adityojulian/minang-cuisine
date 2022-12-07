@@ -22,6 +22,15 @@ Pickles is a solution by to solve problems of waste and supply chain management 
 - [Express](http://expressjs.com/) - Fast node.js network app framework
 - [Firebase](https://firebase.google.com/) - NoSQL and real-time hosting of databases, this project utilize the [Firebase Authentication](https://firebase.google.com/docs/auth) and [Firestore Database](https://firebase.google.com/docs/firestore)
 
+## Rapyd API
+
+List of [Rapyd APIs](https://docs.rapyd.net/build-with-rapyd/docs) utilized in this project
+
+| Rapyd API      | Official Documentation                                                                                                                                                                                                                                                                          | Use Case                                                                                                                                                      |
+| -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Rapyd Disburse | [Rapyd Create Payout](https://docs.rapyd.net/build-with-rapyd/reference/payout#create-payout), [Rapyd List Payout](https://docs.rapyd.net/build-with-rapyd/reference/payout#list-payouts)                                                                                                       | Transaction from users' wallet to outside Bank. This is used to pay donation, bank transfer to personal bank account.                                         |
+| Rapyd Wallet   | [Rapyd Create Wallet](https://docs.rapyd.net/build-with-rapyd/reference/wallet#create-wallet), [Rapyd Update Wallet](https://docs.rapyd.net/build-with-rapyd/reference/wallet#update-wallet), [Rapyd Retrieve Wallet](https://docs.rapyd.net/build-with-rapyd/reference/wallet#retrieve-wallet) | Interact with users' wallet. This is used to create wallet when signing-up, convert or redeem points into money via wallet transfer between Pickles and user. |
+
 ## External APIs
 
 - [BarcodeSpider.com](https://www.barcodespider.com/) - UPC code lookup database
@@ -73,6 +82,7 @@ git clone https://github.com/muhammadegaa/minang-cuisine.git
 flutter pub get
 cd server
 npm install
+node server.js
 cd ..
 flutter run ##Execute when Android Emulator is running
 ```

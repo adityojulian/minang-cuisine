@@ -279,7 +279,7 @@ class MapController extends GetxController {
     // Generating the list of coordinates to be used for
     // drawing the polylines
     PolylineResult result = await polylinePoints.getRouteBetweenCoordinates(
-      "YOUR API KEY HERE", // Google Maps API Key
+      "AIzaSyCv-4RILp8JhJ-cSJS2pm6_aJgjesO0iME", // Google Maps API Key
       PointLatLng(startLatitude, startLongitude),
       PointLatLng(destinationLatitude, destinationLongitude),
       travelMode: TravelMode.walking,
