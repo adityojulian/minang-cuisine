@@ -78,7 +78,7 @@ node --version
 Install the dependencies for frontend and server environment , start the server, then build the app.
 
 ```sh
-git clone https://github.com/muhammadegaa/minang-cuisine.git
+git clone https://github.com/muhammadegaa/pickles.git
 flutter pub get
 cd server
 npm install
